@@ -13,14 +13,33 @@ function setRegionName() {
 </head>
 <body>
 	<h1>Regions</h1>
+
+	<p>
+		Go to <a href="/employees">all employees</a> page<br />
+		Go to <a href="/countries">all countries</a> page
+	</p>
+
+	<hr />	
+	
 	<table>
 		<tr>
 			<th>NAME</th>
 		</tr>
-		<tr th:each="region: ${regions}">
-			<td th:text="${region.name}">...</td>
+		<tr th:each="cur: ${regions}">
+			<td th:text="${cur.name}">Europe</td>
 		</tr>
 	</table>
+
+	<br/>
+	<form action="/regions/select">
+		<label>Get region by id: <select name="id">
+			<option th:each="cur: ${regions}" th:value="${cur.id}"
+				th:text="${cur.id}">1</option>
+		</select></label>
+		<div>
+			<button>Go!</button>
+		</div>
+	</form>
 
 	<h2>Countries by region:</h2>
 	<!-- form action="/countries/region" onsubmit="return setRegionName()">
@@ -75,12 +94,5 @@ function setRegionName() {
 			<button>Delete</button>
 		</div>
 	</form>
-	
-	<hr />	
-	<div>
-		<p>Go to <a href="/employees">all employees</a> page</p>
-		<p>Go to <a href="/countries">all countries</a> page</p>
-	</div>	
-	
 </body>
 </html>

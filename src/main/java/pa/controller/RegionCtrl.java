@@ -1,5 +1,7 @@
 package pa.controller;
 
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,12 @@ public class RegionCtrl {
 			Model model) {
 		logger.debug("Select region " + id);
 
-		model.addAttribute("region", repo.findById(id));
+		Optional<Region> opt = repo.findById(id);
+		if(opt.isPresent()) {
+			model.addAttribute("region", opt.get());
+		} else {
+			model.addAttribute("id", id);
+		}
 		return "region";
 	}
 
