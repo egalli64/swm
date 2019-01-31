@@ -10,7 +10,8 @@
 	<div>
 		<p>
 			Go to <a href="/employees">all employees</a> page<br/>
-			Go to <a href="/regions">all regions</a> page
+			Go to <a href="/regions">all regions</a> page<br/>
+			Go to <a href="/organizations">organizations</a> page
 		</p>
 	</div>
 
@@ -27,7 +28,6 @@
 		</div>
 	</form>
 	
-	
 	<h2>Countries by name</h2>
 	<form action="/countries/startingBy">
 		<label>Starting by: <input name="name" required="required"></label>
@@ -35,10 +35,9 @@
 			<button>Go!</button>
 		</div>
 	</form>
-	
-	
+
 	<br />
-	
+
 	<table>
 		<tr>
 			<th>ID</th>
@@ -46,9 +45,9 @@
 			<th>REGION</th>
 		</tr>
 		<tr th:each="cur: ${countries}">
-			<td th:text="${cur.id}">...</td>
-			<td th:text="${cur.name}">...</td>
-			<td th:text="${cur.region.name}">...</td>
+			<td th:text="${cur.id}">IT</td>
+			<td th:text="${cur.name}">Italy</td>
+			<td th:text="${cur.region.name}">Europe</td>
 		</tr>
 	</table>
 </body>

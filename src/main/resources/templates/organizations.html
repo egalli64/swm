@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Organizations Manager</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1>Organizations</h1>
+
+	<div th:each="org: ${organizations}">
+		<h2 th:text="${org.name}">EU</h2>
+		
+		<div th:each="cur: ${org.countries}">
+			<p th:text="|${cur.id}: ${cur.name}|">name</p>
+		</div>		
+	</div>
+</body>
+</html>
