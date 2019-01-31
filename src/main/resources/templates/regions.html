@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Region Manager</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+<!--script type="text/javascript">
+function setRegionName() {
+	var val = document.getElementById('regionId').selectedOptions[0].text;
+	document.getElementById('regionName').value = val;
+}
+</script-->
+</head>
+<body>
+	<h1>Regions</h1>
+	<table>
+		<tr>
+			<th>NAME</th>
+		</tr>
+		<tr th:each="region: ${regions}">
+			<td th:text="${region.name}">...</td>
+		</tr>
+	</table>
+
+	<h2>Countries by region:</h2>
+	<!-- form action="/countries/region" onsubmit="return setRegionName()">
+		<select name="id" id="regionId">
+			<option th:each="cur: ${regions}" th:value="${cur.id}"
+				th:text="${cur.name}">...</option>
+		</select>
+		<input type="hidden" name="name" id="regionName" />
+		<div>
+			<button>Select</button>
+		</div>
+	</form-->
+	<form action="/countries/region">
+		<select name="id">
+			<option th:each="cur: ${regions}" th:value="${cur.id}"
+				th:text="${cur.name}">...</option>
+		</select>
+		<div>
+			<button>Select</button>
+		</div>
+	</form>
+
+	<h2>Create new region:</h2>
+	<form action="/regions/save">
+		<label>Id: <input name="id" required="required"></label>
+		<label>Name: <input name="name" required="required"></label>
+		<div>
+			<button>Save</button>
+		</div>
+	</form>
+
+	<h2>Edit region:</h2>
+	<form action="/regions/save">
+		<label>Id: <select name="id">
+			<option th:each="cur: ${regions}" th:value="${cur.id}"
+				th:text="${cur.id}">...</option>
+		</select></label>
+		<label>Name: <input name="name" required="required"></label>
+		<div>
+			<button>Save</button>
+		</div>
+	</form>
+
+
+	<h2>Delete region:</h2>
+	<form action="/regions/delete">
+		<select name="id">
+			<option th:each="cur: ${regions}" th:value="${cur.id}"
+				th:text="${cur.name}">...</option>
+		</select>
+		<div>
+			<button>Delete</button>
+		</div>
+	</form>
+	
+	<hr />	
+	<div>
+		<p>Go to <a href="/employees">all employees</a> page</p>
+		<p>Go to <a href="/countries">all countries</a> page</p>
+	</div>	
+	
+</body>
+</html>

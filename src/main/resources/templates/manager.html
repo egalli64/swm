@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Manager</title>
+</head>
+<body>
+	<p th:text="'Hello, ' + ${user} + '!'" />
+
+	<ul>
+		<li><a href="countries">Countries</a></li>
+		<li><a href="regions">Regions</a></li>
+		<li><a href="employees">Employees</a></li>
+	</ul>
+
+	<h2>Select country by id:</h2>
+	<form action="/countries/select">
+		<label>Country id: <input name="id" required="required"></label>
+		<div>
+			<button>Select</button>
+		</div>
+	</form>
+</body>
+</html>

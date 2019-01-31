@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Country</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h2>
+		Country <span th:text="${country.id}">unknown</span> is
+		<span th:text="${country.name}">XX</span>
+	</h2>
+	<p>Go to <a href="/countries">all countries</a> page</p>
+</body>
+</html>
