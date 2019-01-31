@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Organization</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h2 th:if="${id}">
+		No organization found with id <span th:text="${id}"></span>
+	</h2>
+	<div th:if="${organization}">
+		<h2>
+			<span th:text="${organization.name}">EU</span>
+		</h2>
+
+		<p th:if="${message}" th:text="${message}"></p>
+
+		<h2>Add country to <span th:text="${organization.name}">EU</span></h2>
+		<form action="/organization/add">
+			<label>Country:
+				<select name="country">
+					<option th:each="cur: ${countries}" th:value="${cur.id}"
+						th:text="${cur.name}">Italy</option>
+				</select>
+			</label>
+			<input type="hidden" name="org" th:value="${organization.id}" />
+			<div>
+				<button>Save</button>
+			</div>
+		</form>
+
+		<div th:if="${organization.countries}">
+			<h3>Countries in <span th:text="${organization.name}">EU</span></h3>
+			<ul th:each="cur: ${organization.countries}">
+				<li th:text="|${cur.id}: ${cur.name}|">IT: Italy</li>
+			</ul>		
+		</div>
+		<div th:unless="${organization.countries}">
+			<h3>No country in <span th:text="${organization.name}">EU</span></h3>
+		</div>
+	</div>
+	
+	<hr />
+	<p>Go to <a href="/organizations">all organizations</a> page</p>
+</body>
+</html>

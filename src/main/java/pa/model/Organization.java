@@ -26,6 +26,14 @@ public class Organization {
 			inverseJoinColumns = @JoinColumn(name = "COUNTRY_ID"))
 	Set<Country> countries;
 
+	public Organization() {
+	}
+	
+	public Organization(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -8,6 +8,42 @@
 <body>
 	<h1>Organizations</h1>
 
+	<p>
+		Go to <a href="/countries">all countries</a> page
+	</p>
+
+	<hr />
+
+	<form action="/organization">
+		<label>Organization: <select name="id">
+			<option th:each="cur: ${organizations}" th:value="${cur.id}"
+				th:text="${cur.name}">EU</option>
+		</select></label>
+		<div>
+			<button>Go!</button>
+		</div>
+	</form>
+
+	<h2>Create new organization:</h2>
+	<form action="/organization/save">
+		<label>Id: <input name="id" required="required"></label>
+		<label>Name: <input name="name" required="required"></label>
+		<div>
+			<button>Save</button>
+		</div>
+	</form>
+
+	<h2>Delete organization:</h2>
+	<form action="/organization/delete">
+		<label>Name: <select name="id">
+			<option th:each="cur: ${organizations}" th:value="${cur.id}"
+				th:text="${cur.name}">EU</option>
+		</select></label>
+		<div>
+			<button>Kill it!</button>
+		</div>
+	</form>
+
 	<div th:each="org: ${organizations}">
 		<h2 th:text="${org.name}">EU</h2>
 		
