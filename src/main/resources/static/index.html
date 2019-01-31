@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Welcome</title>
+<script src="js/myScripts.js"></script>
+<!-- 
+<link rel="stylesheet" type="text/css" href="css/myStyles.css">
+  -->
+</head>
+<body>
+	<h1>Welcome to the homepage!</h1>
+
+	<p>
+		A <a href="/simple.html">simple HTML</a> page<br />
+		A <a href="/simple">simple Thymeleaf</a> page
+	</p>
+
+	<fieldset>
+		<legend>Hello</legend>
+		<form name="frmLog" action="login" method="post"
+			onsubmit="return checkUser()">
+			<div>
+				<label for="userId">User:</label>
+				<input name="user" id="userId">
+				<label for="pwdId">Password:</label>
+				<input name="password" id="pwdId" type="password">
+			</div>
+			<div>
+				<button>Check in</button>
+			</div>
+		</form>
+	</fieldset>
+
+	<fieldset>
+		<legend>GET is not a good idea here</legend>
+		<form action="login" method="get">
+			<div>
+				<label>User: <input name="user" /></label>
+				<label>Password: <input name="password" type="password"></label>
+			</div>
+			<div>
+				<button>Check in</button>
+			</div>
+		</form>
+	</fieldset>
+</body>
+</html>
