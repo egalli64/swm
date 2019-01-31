@@ -43,7 +43,7 @@ public class Employee {
 	private void setPersonalData(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.email = firstName.charAt(0) + lastName.substring(0, Math.min(7, lastName.length())).toUpperCase();		
+		setDefaultEmail();
 	}
 
 	public long getId() {
@@ -76,6 +76,14 @@ public class Employee {
 
 	public String getEmail() {
 		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;		
+	}
+
+	public void setDefaultEmail() {
+		this.email = firstName.charAt(0) + lastName.substring(0, Math.min(7, lastName.length())).toUpperCase();		
 	}
 
 	@Override

@@ -102,25 +102,27 @@ public class EmployeeCtrl {
 		logger.debug("Save coder");
 
 		Optional<Employee> opt = repo.findByIdAndJobId(id, CODER);
-		if(!opt.isPresent()) {
-			model.addAttribute("message", "There is no coder with id " + id);			
-		}
-		else {
+		if (!opt.isPresent()) {
+			model.addAttribute("message", "There is no coder with id " + id);
+		} else {
 			Employee employee = opt.get();
-			if(first != null) {
+			if (first != null) {
 				employee.setFirstName(first);
 			}
-			if(last != null) {
+			if (last != null) {
 				employee.setLastName(last);
+			}
+			if (first != null || last != null) {
+				employee.setDefaultEmail();
 			}
 			try {
 				repo.save(employee);
 				model.addAttribute("message", String.format("Coder %s %s correctly saved", first, last));
 			} catch (Exception ex) {
 				String message = String.format("Can't save coder %s %s", first, last);
-				logger.error(message);
+				logger.error(message, ex);
 				model.addAttribute("message", message);
-			}			
+			}
 		}
 
 		model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
@@ -133,13 +135,18 @@ public class EmployeeCtrl {
 			Model model) {
 		logger.debug("Delete coder " + id);
 
-		try {
-			repo.deleteById(id);
-			model.addAttribute("message", String.format("Coder %d removed", id));
-		} catch (Exception ex) {
-			String message = "Can't delete coder " + id;
-			logger.error(message);
-			model.addAttribute("message", message);
+		Optional<Employee> opt = repo.findByIdAndJobId(id, CODER);
+		if(!opt.isPresent()) {
+			model.addAttribute("message", "There is no coder with id " + id);			
+		} else {
+			try {
+				repo.deleteById(id);
+				model.addAttribute("message", String.format("Coder %d removed", id));
+			} catch (Exception ex) {
+				String message = "Can't delete coder " + id;
+				logger.error(message, ex);
+				model.addAttribute("message", message);
+			}			
 		}
 
 		model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
