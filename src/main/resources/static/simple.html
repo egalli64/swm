@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Basic HTML stuff</title>
+</head>
+<body>
+	<p>
+		Back to <a href="/index.html">home</a> page<br />
+		Forward to <a href="/simple2.html">next</a> page
+	</p>
+
+	<h1 id="top">Hello</h1>
+	<h2>Hello</h2>
+	<h3>Hello</h3>
+	<h4>Hello</h4>
+	<h5>Hello</h5>
+	<h6>Hello</h6>
+
+	<h2>And now, a couple of paragraphs:</h2>
+	<p>You can insert		tabs, blanks   and returns
+		as you like. The rendering of the page is another story.</p>
+	<p>Blah, blah, blah.</p>
+	
+	<h2>Text</h2>
+	<p>You could show a <b>few words</b> in bold, or <i>maybe</i> in italic.</p>
+	<p>Superscript: E=MC<sup>2</sup></p>
+	<p>Subscript: CO<sub>2</sub></p>
+	<p>To force a new line,<br/>use a break element</p>
+	<p>An horizontal ruler draws a line to separate</p>
+	<hr />
+	<p>Different blocks of the document</p>
+
+	<h2>Lists</h2>
+	<h3>An ordered list:</h3>
+	<ol>
+		<li>This is the most important thing to do</li>
+		<li>Then do this</li>
+		<li>Something else that could be useful</li>
+		<li>Only if you have some time left</li>
+	</ol>
+	<h3>An unordered list:</h3>
+	<ul>
+		<li>This is an important thing to do</li>
+		<li>Something else that could be useful</li>
+		<li>Only if you have some time left</li>
+	</ul>
+
+	<h3>A definition list:</h3>
+	<dl>
+		<dt>Instance method</dt>
+		<dd>A class function that refers to an actual object</dd>
+		<dt>Class method</dt>
+		<dt>Static method</dt>
+		<dd>A function that refer to the class itself, not to an instance of it</dd>
+	</dl>
+
+	<h3>Nested list:</h3>
+	<ul>
+		<li>Something</li>
+		<li>Something else in four steps:
+			<ol>
+				<li>One</li>
+				<li>Two</li>
+				<li>Three</li>
+				<li>Four</li>
+			</ol>
+		</li>
+		<li>And something more</li>
+	</ul>
+
+	<h2>Links</h2>
+	<p>Go to the <a href="http://www.spring.io">Spring</a> site.</p>
+	<p>Go to the <a href="index.html">index page</a> in this site</p>
+	<p>Any question? Contact the <a href="mailto:adm@example.com">site administrator</a></p>
+	<p>Go to <a href="#top">the top</a> of the page</p>
+
+	<h2>Images</h2>
+	<p align="center">
+		<img src="images/flower.jpg" alt="A flower" width="150" height="150" />
+	</p>
+	<p>
+		<img src="https://www.insidemarketing.eu/cdn/wp-content/uploads/2018/01/gattino.jpg" alt="A cat" width="150" />
+	</p>
+	
+	<figure>
+		<img src="images/flower.jpg" alt="A flower" width="200">
+		<figcaption>This is just a flower.</figcaption>
+	</figure>
+
+	<h2>Tables</h2>
+	<h3>A simple one:</h3>
+	<table>
+		<tr>
+			<td>7</td><td>8</td><td>9</td>
+		</tr>
+		<tr>
+			<td>4</td><td>5</td><td>6</td>
+		</tr>
+		<tr>
+			<td>1</td><td>2</td><td>3</td>
+		</tr>
+	</table>
+
+	<h3>Headers:</h3>
+	<table>
+		<tr>
+			<th scope="row">\</th>
+			<th scope="col">Left</th>
+			<th scope="col">Center</th>
+			<th scope="col">Row</th>
+		</tr>
+		<tr>
+			<th scope="row">Top</th>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+		</tr>
+		<tr>
+			<th scope="row">Center</th>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<th scope="row">Low</th>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+	</table>
+
+	<h3>Spanning rows/columns:</h3>
+	<h4>Spanning columns</h4>
+	<table>
+		<tr>
+			<th>Day\Time</th>
+			<th>9-11</th>
+			<th>11-13</th>
+			<th>14-16</th>
+			<th>16-18</th>
+		</tr>
+		<tr>
+			<th>Monday</th>
+			<td colspan="2" align="center">SQL</td>
+			<td>Exercise</td>
+			<td>JDBC</td>
+		</tr>
+		<tr>
+			<th>Tuesday</th>
+			<td colspan="3" align="center">HTML</td>
+			<td>Exercise</td>
+		</tr>
+	</table>
+
+	<h4>Spanning rows</h4>
+	<table>
+		<tr>
+			<th>Time\Room</th>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+		</tr>
+		<tr>
+			<th>9-11</th>
+			<td rowspan="2">Java</td>
+			<td>HTML</td>
+			<td>SQL</td>
+		</tr>
+		<tr>
+			<th>11-13</th>
+			<td>Spring</td>
+			<td>CSS</td>
+		</tr>
+	</table>
+
+	<h4>Head, body, foot</h4>
+	<table>
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Input</th>
+				<th>Output</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>1st January</th>
+				<td>12</td>
+				<td>42</td>
+			</tr>
+			<tr>
+				<th>2nd January</th>
+				<td>32</td>
+				<td>21</td>
+			</tr>
+			<tr>
+				<th>...</th>
+				<td>...</td>
+				<td>...</td>
+			</tr>
+			<tr>
+				<th>31st January</th>
+				<td>80</td>
+				<td>120</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td></td>
+				<td>4010</td>
+				<td>8020</td>
+			</tr>
+		</tfoot>
+	</table>
+
+	<h2>Forms</h2>
+	<form action="login">
+		<p>Text input: <input type="text" name="user" size="15" maxlength="30" /></p>
+
+		<p>Password input: <input type="password" name="password" size="15" maxlength="30" /></p>
+
+		<p>
+			Radio input:<br />
+				<input type="radio" name="lang" value="Java" checked="checked" />Java<br />
+				<input type="radio" name="lang" value="Python" />Python<br />
+				<input type="radio" name="lang" value="C++" />C++<br />
+		</p>
+
+		<p>
+			Check box input:<br />
+			<input type="checkbox" name="ds" value="map" checked="checked" />Map<br />
+			<input type="checkbox" name="ds" value="list" />List<br />
+			<input type="checkbox" name="ds" value="set" />Set<br />
+		</p>
+
+		<p>
+			Select option:<br />
+			<select name="os">
+				<option value="none">-</option>
+				<option value="linux">Linux</option>
+				<option value="windows">Windows</option>
+				<option value="macOs">MacOS</option>
+			</select>
+		</p>
+
+		<p>
+			Select multiple:<br />
+			<select name="ide" size="4" multiple="multiple">
+				<option value="eclipse" selected="selected">Eclipse</option>
+				<option value="netbeans">NetBeans</option>
+				<option value="intellij" selected="selected">IntelliJ</option>
+				<option value="jedit">jEdit</option>
+			</select>
+		</p>
+
+		<p>
+			Text area:<br />
+			<textarea name="comments" cols="20" rows="4">Enter your comments here.</textarea>
+		</p>
+
+		<p>
+			Input submit:<br />
+			<input type="submit" value="Enter" />
+		</p>
+
+		<p>
+			Image button:<br />
+			<input type="image" src="images/flower.jpg" width="40" height="40"/>
+		</p>
+
+		<p>
+			Hidden input:<br />
+			<input type="hidden" name="invisible" value="notShowed" />
+		</p>
+		
+		<p>
+			<label>Label: <input type="text" name="labeled" /></label>
+			<br />
+			<label for="other">Label: </label>
+			<input type="text" id="other" />
+		</p>
+
+		<fieldset>
+			<legend>Grouping with field set and legend</legend>
+			<label>First name: <input type="text" name="fname" /></label>
+			<label>Last name: <input type="text" name="lname" /></label>
+		</fieldset>
+	</form>
+
+	<fieldset>
+		<legend>A couple of HTML5 improvements</legend>
+		<form action="login" method="post">
+			<label for="username">Name:</label>
+			<input type="text" name="user" required />
+			<label for="password">Password:</label>
+			<input type="password" name="password" required />
+			<br />
+			<input type="submit" value="Enter" />
+		</form>
+	</fieldset>
+
+	<form action="upload" method="post">
+		<p>
+			Input file to upload:<br />
+			<input type="file" name="data" /><br />
+			<input type="submit" value="Upload" />
+		</p>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Adding JavaScript</title>
+<!-- script src="js/jquery-3.3.1.min.js"></script-->
+<!-- script src="//code.jquery.com/jquery-3.3.1.min.js"></script-->
+<script>
+	// alert('hello world!');
+	// document.write('<p>Hello world!</p>');
+	var name = prompt('What is your name?', 'Guest');
+	document.write('<h1>Welcome, ' + name + '</h1>');
+
+	function generateMessage(user, date) {
+		return 'Hello ' + user + '. You connected at ' + date;
+	}
+
+	// same as: $(document).ready(function() {
+	$(function() {
+		$('h2').slideDown(1000);
+
+		var score = 42;
+		$('textarea').append('Your score is ' + score + '\n');
+
+		var days = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
+		$('textarea').append('Today is ' + days[1] + '\n');
+
+		days.push('Faraway');
+		$('textarea').append('Last days is ' + days[days.length - 1] + '\n');
+
+		days.unshift('Past');
+		$('textarea').append('First day is ' + days[0] + '\n');
+
+		$('textarea').append('Popping last day: ' + days.pop() + '\n');
+		$('textarea').append('Shifting first day: ' + days.shift() + '\n');
+		$('textarea').append('My days: ' + days + '\n');
+
+		for (var i = 0; i < days.length; i++) {
+			$('textarea').append('[' + i + ': ' + days[i] + ']');
+		}
+		$('textarea').append('\n');
+
+		var now = new Date();
+		$('textarea').append(generateMessage(name, now) + '\n');
+
+		// jquery access by id
+		//$('#signature').text('Hello by JQuery');
+
+		// html5 access by id
+		document.getElementById("signature").innerText = 'Hello by HTML5';
+
+		$('#tmpId').replaceWith(name);
+
+		$('#colorSwapper').click(function() {
+			$('#pmsg').toggleClass('red');
+		});
+
+		$('#upsize').click(function() {
+			var cur = parseInt($('#pmsg').css('font-size'));
+			$('#pmsg').css('font-size', cur * 2);
+		});
+
+		$('#downsize').click(function() {
+			var cur = parseInt($('#pmsg').css('font-size'));
+			$('#pmsg').css('font-size', cur > 1 ? cur / 2 : 1);
+		});
+
+		$('html').dblclick(function(e) {
+			s = 'Double-click detected at ' + e.pageX + ', ' + e.pageY + '\n'
+			$('textarea').append(s);
+		});
+
+		$('#pmsg').mouseover(function() {
+			$('textarea').append('Mouse over the personal message\n');
+		});
+
+		$('#useless').click(function() {
+			$(this).val("Don't click me");
+		});
+	});
+	
+	function convertValue(elSel) {
+		var target = document.getElementById('numStrId');
+		switch(elSel.selectedOptions[0].value) {
+		case '1':
+			target.value = 'One';
+			break;
+		case '2':
+			target.value = 'Two';
+			break;
+		case '3':
+			target.value = 'Three';
+			break;
+		default:
+			target.value = '';
+			break;
+		}
+	}
+</script>
+<style type="text/css">
+.red {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<p>
+		Back to <a href="/simple2.html">previous</a> page<br />
+		Back to <a href="/index.html">home</a> page
+	</p>
+
+	<h2 hidden=true>A simple page</h2>
+	<textarea rows="20" cols="80"></textarea>
+	<p id='signature'>&copy; ACME Inc. 2019</p>
+	<hr />
+	<p id="pmsg">
+		This is a message just for <span id="tmpId">you</span>: hello!
+	</p>
+	<input type="button" id="colorSwapper" value="Change color" /> ,
+	<input type="button" id="upsize" value="Bigger" /> or
+	<input type="button" id="downsize" value="Smaller" />?
+	<br />
+	<input type="button" id="useless" value="Click me" />
+	<hr />
+	<div>
+		<select onchange="convertValue(this)">
+			<option>-</option>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+		</select>
+		<br />
+		<label>As string: <input id="numStrId" readonly="readonly"></label>
+	</div>
+</body>
+</html>

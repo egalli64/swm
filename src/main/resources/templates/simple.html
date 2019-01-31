@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ThymeLeaf basic stuff</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1>Fake Regions</h1>
+
+	The registered user name is
+	<span th:text="${user}">Missing</span>
+	<br />
+	<label for="unId">User name: </label>
+	<input type="text" id="unId" name="un" value="..." th:value="${user}" />
+	<br />
+
+	<p>
+		These <span th:text="${data}">no</span> regions are available here.
+	</p>
+
+	<p>Selecting and printing zeroth element in data:</p>
+	<div th:object="${data[0]}">
+		Id: <span th:text="*{id}">...</span>. <br /> Name: <span
+			th:text="*{name}">...</span>.
+		<p>Id converted to roman:
+		<th:block th:switch="*{id}">
+			<span th:case="1"> I </span>
+			<span th:case="2"> II </span>
+			<span th:case="*"> III </span>
+		</th:block>
+		</p>
+	</div>
+
+	<h3>Table w/ th:each:</h3>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>NAME</th>
+		</tr>
+		<tr th:each="region: ${data}">
+			<td th:text="${region.id}">...</td>
+			<td th:text="${region.name}">...</td>
+		</tr>
+	</table>
+
+	<h3>Select option w/ th:each:</h3>
+	<select name="selected">
+		<option th:each="cur: ${data}" th:value="${cur.id}"
+			th:text="${cur.name}">...</option>
+	</select>
+	<br />
+	
+	Users:
+	<br />
+	<table>
+		<tr>
+			<th>NAME</th>
+			<th>PASSWORD</th>
+		</tr>
+		<tr th:each="user: ${users}">
+			<td th:text="${user[0]}">...</td>
+			<td th:text="${user[1]}">...</td>
+		</tr>
+	</table>
+</body>
+</html>

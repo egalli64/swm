@@ -1,0 +1,45 @@
+body {
+	background-color: #80ff80;
+}
+
+p {
+	font-family: monospace;
+}
+
+#special {
+	color: violet;
+}
+
+h1, h2, h3 {
+	color: yellow;
+}
+
+p.myClass {
+	color: blue;
+}
+
+#paragraphId {
+	color: red;
+}
+
+#blockId {
+	border: 3px solid #ff8000;
+	background-color: #ffff80;
+}
+
+.txtCls {
+	font-family: sans-serif;
+	font-size: 20px;
+}
+
+.boldCls {
+	font-weight: bold;
+}
+
+.itaCls {
+	font-style: italic;
+}
+
+.upperCls {
+	text-transform: uppercase;	
+}
