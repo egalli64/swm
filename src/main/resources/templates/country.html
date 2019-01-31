@@ -7,8 +7,10 @@
 </head>
 <body>
 	<h2>
-		Country <span th:text="${country.id}">unknown</span> is
-		<span th:text="${country.name}">XX</span>
+		Country <span th:text="${country.id}">IT</span> is
+		<span th:text="${country.name}">Italy</span><span th:if="${country.region}">, region
+			<span th:text="${country.region.name}">Europe</span>
+		</span>
 	</h2>
 	<p>Go to <a href="/countries">all countries</a> page</p>
 </body>

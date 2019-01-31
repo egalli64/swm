@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Countries Manager</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<div th:if="${region.name.isEmpty()}">
+		<h1>No country with region id <span th:text="${region.id}">XX</span></h1>
+		<p>
+			Back to <a href="/regions">all regions</a> page
+		</p>
+	</div>
+
+	<div th:unless="${region.name.isEmpty()}">
+		<h1>Countries in <span th:text="${region.name}">region</span></h1>
+		<p>
+			Back to <a href="/regions">all regions</a> page
+		</p>
+		<hr />
+
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+			</tr>
+			<tr th:each="cur: ${countries}">
+				<td th:text="${cur.id}">IT</td>
+				<td th:text="${cur.name}">Italy</td>
+			</tr>
+		</table>
+	
+		<h2>Save country in <span th:text="${region.name}">Europe</span>:</h2>
+		<form action="/countries/save">
+			<label>Id: <input name="cid" required="required"></label>
+			<br />
+			<label>Name: <input name="name" required="required"></label>
+			<input type="hidden" name="rid" th:value="${region.id}" />
+			<div>
+				<button>Save</button>
+			</div>
+		</form>
+	
+		<h2>Delete country in <span th:text="${region.name}">Europe</span>:</h2>
+		<form action="/countries/delete">
+			<select name="cid">
+				<option th:each="cur: ${countries}" th:value="${cur.id}"
+					th:text="${cur.name}">Italy</option>
+			</select>
+			<input type="hidden" name="rid" id="regionId" th:value="${region.id}" />
+			<div>
+				<button>Delete</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

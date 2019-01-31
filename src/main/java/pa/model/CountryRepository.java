@@ -14,5 +14,5 @@ public interface CountryRepository extends CrudRepository<Country, String> {
 	List<Country> findByRegion(Region region);
 	List<Country> findByRegion_id(int id);
 
-	List<Country> findByNameLike(String name);
+	List<Country> findByNameLikeIgnoreCase(String name);
 }

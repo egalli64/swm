@@ -37,10 +37,10 @@ public class CountryCtrl {
 	public String selectCountry( //
 			@RequestParam String id, //
 			Model model) {
-		Optional<Country> country = repo.findById(id.toUpperCase());
-		logger.debug(String.format("Country with id %s is %s", id, country));
+		logger.debug("Select country with id " + id);
 
-		model.addAttribute("country", country.orElse(new Country(id, "Unknown", null)));
+		Optional<Country> country = repo.findById(id.toUpperCase());
+		model.addAttribute("country", country.orElse(new Country(id, "unknown", null)));
 		return "country";
 	}
 
@@ -49,7 +49,7 @@ public class CountryCtrl {
 			@RequestParam String name, //
 			Model model) {
 		logger.debug("countries starting by " + name);
-		List<Country> countries = repo.findByNameLike(name + "%");
+		List<Country> countries = repo.findByNameLikeIgnoreCase(name + "%");
 
 		model.addAttribute("message", " with name starting by " + name);
 		model.addAttribute("countries", countries);

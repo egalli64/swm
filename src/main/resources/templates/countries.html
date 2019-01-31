@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
+	<h1>Countries<span th:text=" ${message}" th:if="${message}"></span></h1>
 	<div>
 		<p>
 			Go to <a href="/employees">all employees</a> page<br/>
@@ -14,18 +15,40 @@
 	</div>
 
 	<hr />
-
-	<h1>Countries<span th:text=" ${message}" th:if="${message}"></span></h1>
+	
+	<br/>
+	<form action="/countries/select">
+		<label>Get country by id: <select name="id">
+			<option th:each="cur: ${countries}" th:value="${cur.id}"
+				th:text="${cur.id}">IT</option>
+		</select></label>
+		<div>
+			<button>Go!</button>
+		</div>
+	</form>
+	
+	
+	<h2>Countries by name</h2>
+	<form action="/countries/startingBy">
+		<label>Starting by: <input name="name" required="required"></label>
+		<div>
+			<button>Go!</button>
+		</div>
+	</form>
+	
+	
+	<br />
+	
 	<table>
 		<tr>
 			<th>ID</th>
 			<th>NAME</th>
 			<th>REGION</th>
 		</tr>
-		<tr th:each="country: ${countries}">
-			<td th:text="${country.id}">...</td>
-			<td th:text="${country.name}">...</td>
-			<td th:text="${country.region.name}">...</td>
+		<tr th:each="cur: ${countries}">
+			<td th:text="${cur.id}">...</td>
+			<td th:text="${cur.name}">...</td>
+			<td th:text="${cur.region.name}">...</td>
 		</tr>
 	</table>
 </body>

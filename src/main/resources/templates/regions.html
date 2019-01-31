@@ -4,12 +4,6 @@
 <meta charset="utf-8">
 <title>Region Manager</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
-<!--script type="text/javascript">
-function setRegionName() {
-	var val = document.getElementById('regionId').selectedOptions[0].text;
-	document.getElementById('regionName').value = val;
-}
-</script-->
 </head>
 <body>
 	<h1>Regions</h1>
@@ -42,20 +36,10 @@ function setRegionName() {
 	</form>
 
 	<h2>Countries by region:</h2>
-	<!-- form action="/countries/region" onsubmit="return setRegionName()">
-		<select name="id" id="regionId">
-			<option th:each="cur: ${regions}" th:value="${cur.id}"
-				th:text="${cur.name}">...</option>
-		</select>
-		<input type="hidden" name="name" id="regionName" />
-		<div>
-			<button>Select</button>
-		</div>
-	</form-->
 	<form action="/countries/region">
 		<select name="id">
 			<option th:each="cur: ${regions}" th:value="${cur.id}"
-				th:text="${cur.name}">...</option>
+				th:text="${cur.name}">Europe</option>
 		</select>
 		<div>
 			<button>Select</button>
