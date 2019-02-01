@@ -58,7 +58,7 @@ public class CountryCtrl {
 
 	@GetMapping("/countries/region")
 	public String countriesByRegion( //
-			@RequestParam int id, //
+			@RequestParam long id, //
 			Model model) {
 		Optional<Region> region = regionRepo.findById(id);
 		logger.debug("Countries by region " + id);
@@ -79,7 +79,7 @@ public class CountryCtrl {
 	public String saveCountry( //
 			@RequestParam String cid, //
 			@RequestParam String name, //
-			@RequestParam int rid, //
+			@RequestParam long rid, //
 			Model model) {
 		Optional<Region> region = regionRepo.findById(rid);
 		if (region.isPresent()) {
@@ -100,7 +100,7 @@ public class CountryCtrl {
 	@GetMapping("/countries/delete")
 	public String deleteCountry( //
 			@RequestParam String cid, //
-			@RequestParam int rid, //
+			@RequestParam long rid, //
 			Model model) {
 		logger.debug("Delete country " + cid);
 

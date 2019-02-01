@@ -34,7 +34,7 @@ public class OrganizationCtrl {
 	
 	@GetMapping("/organization")
 	public String organization( //
-			@RequestParam int id, //
+			@RequestParam long id, //
 			Model model) {
 		logger.debug("Select organization with id " + id);
 
@@ -50,7 +50,7 @@ public class OrganizationCtrl {
 
 	@GetMapping("/organization/save")
 	public String saveOrganization( //
-			@RequestParam int id, //
+			@RequestParam long id, //
 			@RequestParam String name, //
 			Model model) {
 		Organization org = new Organization(id, name);
@@ -63,7 +63,7 @@ public class OrganizationCtrl {
 
 	@GetMapping("/organization/delete")
 	public String deleteOrganization( //
-			@RequestParam int id, //
+			@RequestParam long id, //
 			Model model) {
 		logger.debug("Delete organization " + id);
 		repo.deleteById(id);
@@ -75,28 +75,28 @@ public class OrganizationCtrl {
 
 	@GetMapping("/organization/add")
 	public String addToOrganization( //
-			@RequestParam String country, //
-			@RequestParam int org, //
+			@RequestParam(name = "country") String cid, //
+			@RequestParam(name = "org") long oid, //
 			Model model) {
-		logger.debug(String.format("Adding country %s to organization %d", country, org));
+		logger.debug(String.format("Adding country %s to organization %d", cid, oid));
 
 		// ensure country is valid
-		Optional<Country> optCountry = repoCountry.findById(country);
+		Optional<Country> optCountry = repoCountry.findById(cid);
 		if (!optCountry.isPresent()) {
-			model.addAttribute("message", String.format("Can't add country %s to this organization", country));
+			model.addAttribute("message", String.format("Can't add country %s to this organization", cid));
 		}
 
-		Optional<Organization> opt = repo.findById(org);
-		if(opt.isPresent()) {
-			Organization cur = opt.get();
+		Optional<Organization> optOrg = repo.findById(oid);
+		if(optOrg.isPresent()) {
+			Organization org = optOrg.get();
 			if(optCountry.isPresent()) {
-				cur.getCountries().add(optCountry.get());
-				repo.save(cur);
+				org.getCountries().add(optCountry.get());
+				repo.save(org);
 			}
-			model.addAttribute("organization", cur);
+			model.addAttribute("organization", org);
 			model.addAttribute("countries", repoCountry.findAll());
 		} else {
-			model.addAttribute("id", org);
+			model.addAttribute("id", oid);
 		}
 
 		return "organization";

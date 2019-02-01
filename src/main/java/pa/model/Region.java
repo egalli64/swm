@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Region {
 	@Id
 	@Column(name = "REGION_ID")
-	private int id;
+	private long id;
 
 	@Column(name = "REGION_NAME")
 	private String name;
@@ -25,21 +25,21 @@ public class Region {
 	public Region() {
 	}
 
-	public Region(int id, String name) {
+	public Region(long id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
 		return name;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public void setName(String name) {

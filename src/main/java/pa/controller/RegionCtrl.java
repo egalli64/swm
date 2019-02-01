@@ -29,7 +29,7 @@ public class RegionCtrl {
 
 	@GetMapping("/regions/select")
 	public String selectRegion( //
-			@RequestParam int id, //
+			@RequestParam long id, //
 			Model model) {
 		logger.debug("Select region " + id);
 
@@ -44,8 +44,8 @@ public class RegionCtrl {
 
 	@GetMapping("/regions/save")
 	public String saveRegion( //
-			@RequestParam(name = "id") int id, //
-			@RequestParam(name = "name") String name, //
+			@RequestParam long id, //
+			@RequestParam String name, //
 			Model model) {
 		Region region = new Region(id, name);
 		logger.debug("Save region " + region);
@@ -57,7 +57,7 @@ public class RegionCtrl {
 
 	@GetMapping("/regions/delete")
 	public String deleteRegion( //
-			@RequestParam int id, //
+			@RequestParam long id, //
 			Model model) {
 		logger.debug("Delete region " + id);
 		repo.deleteById(id);

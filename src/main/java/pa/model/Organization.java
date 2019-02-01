@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Organization {
 	@Id
 	@Column(name = "ORG_ID")
-	private int id;
+	private long id;
 
 	@Column(name = "ORG_NAME")
 	private String name;
@@ -29,12 +29,12 @@ public class Organization {
 	public Organization() {
 	}
 	
-	public Organization(int id, String name) {
+	public Organization(long id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
