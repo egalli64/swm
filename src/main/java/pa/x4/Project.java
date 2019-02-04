@@ -13,4 +13,12 @@ public class Project {
 	@TableGenerator(name = "X_TABLE_GENERATOR", allocationSize = 1)
 	@GeneratedValue(generator = "X_TABLE_GENERATOR")
 	private long prj_id;
+
+	public Project() {
+	}
+	
+	@Override
+	public String toString() {
+		return "Project [id=" + prj_id + "]";
+	}
 }

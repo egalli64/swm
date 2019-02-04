@@ -21,7 +21,7 @@ create table x2_workstations(
 );
 
 -- drop table x2_workstations;
-select * from x2_workstations;
+-- select * from x2_workstations;
 
 create table x2_employees(
     emp_id integer primary key,
@@ -42,3 +42,21 @@ create table x3_employees(
     dep_id integer referencing x3_departments(dep_id)
 );
 
+--
+-- ManyToMany
+
+create table x4_employees(
+    emp_id integer primary KEY
+);
+
+
+create table x4_projects(
+    prj_id integer primary KEY
+);
+
+create table x4_emp_prj(
+    emp_id integer REFERENCES x4_employees(emp_id) ON DELETE CASCADE,
+    prj_id integer REFERENCES x4_projects(prj_id) ON DELETE CASCADE,
+	
+	primary key(emp_id, prj_id)
+);
