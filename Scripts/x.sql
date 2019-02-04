@@ -60,3 +60,24 @@ create table x4_emp_prj(
 	
 	primary key(emp_id, prj_id)
 );
+
+--
+-- Unidirectional One-to-Many
+
+create table x5_departments(
+    dep_id integer primary key
+);
+
+create table x5_employees(
+    emp_id integer primary key
+);
+
+create table x5_dep_emp(
+    dep_id integer REFERENCES x4_projects(prj_id) ON DELETE CASCADE,
+    emp_id integer REFERENCES x4_employees(emp_id) ON DELETE CASCADE unique,
+	
+	primary key(dep_id, emp_id)
+);
+
+DROP TABLE x5_dep_emp;
+

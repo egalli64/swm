@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Xtra3</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1>Many To One (and One To Many)</h1>
+	
+	<p th:each="cur: ${messages}" th:text="${cur}">OK</p>
+
+	<h2>X3 Employees</h2>
+	<p th:each="cur: ${employees}" th:text="${cur}">[]</p>
+
+	<h2>X3 Departments</h2>
+	<p th:each="cur: ${departments}" th:text="${cur}">[]</p>
+
+	<h2>X3a Departments</h2>
+	<p th:each="cur: ${departments2}" th:text="${cur}">[]</p>
+</body>
+</html>
