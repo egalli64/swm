@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Xtra</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1>More examples</h1>
+	
+	<p th:each="cur: ${messages}" th:text="${cur}">OK</p>
+
+	<h2>X1 Employees</h2>
+	<p th:each="cur: ${x1Employees}" th:text="${cur}">[]</p>
+
+	<h2>X2 Employees</h2>
+	<p th:each="cur: ${x2Employees}" th:text="${cur}">[]</p>
+
+	<h2>X2 Workstations</h2>
+	<p th:each="cur: ${x2Workstations}" th:text="${cur}">[]</p>
+
+	<h2>X2/a Workstations</h2>
+	<p th:each="cur: ${x2aWorkstations}" th:text="${cur}">[]</p>
+
+	<h2>X3 Employees</h2>
+	<p th:each="cur: ${x3Employees}" th:text="${cur}">[]</p>
+
+	<h2>X3 Departments</h2>
+	<p th:each="cur: ${x3Departments}" th:text="${cur}">[]</p>
+
+	<h2>X3a Departments</h2>
+	<p th:each="cur: ${x3aDepartments}" th:text="${cur}">[]</p>
+</body>
+</html>
