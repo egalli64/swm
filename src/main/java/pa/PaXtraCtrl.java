@@ -2,8 +2,10 @@ package pa;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -57,6 +59,9 @@ public class PaXtraCtrl {
 
 	@Autowired
 	pa.x6a.EmployeeRep repoX6aEmp;
+
+	@Autowired
+	pa.x7.EmployeeRep repoX7Emp;
 
 	@GetMapping("/xtra1")
 	public String xtra1(Model model) {
@@ -219,5 +224,22 @@ public class PaXtraCtrl {
 		model.addAttribute("employees", repoX6aEmp.findAll());
 		model.addAttribute("messages", messages);
 		return "xtra6a";
+	}
+
+	@GetMapping("/xtra7")
+	public String xtra7(Model model) {
+		// Map
+		List<String> messages = new ArrayList<>();
+
+		Random random = new Random();
+		Map<pa.x7.Employee.PhoneType, String> phones = new HashMap<>();
+		for(pa.x7.Employee.PhoneType pt : pa.x7.Employee.PhoneType.values()) {
+			phones.put(pt, Integer.toString(random.nextInt(9_000) + 1_000));
+		}
+		messages.add("saving " + repoX7Emp.save(new pa.x7.Employee(phones)));
+
+		model.addAttribute("employees", repoX7Emp.findAll());
+		model.addAttribute("messages", messages);
+		return "xtra7";
 	}
 }

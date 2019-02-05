@@ -83,3 +83,19 @@ create table x6_employee_phones(
 
 	primary key(emp_id, phone)	
 );
+
+
+--
+-- MAP
+
+create table x7_employees(
+    emp_id integer primary key
+);
+
+create table x7_employee_phones(
+    emp_id integer references x6_employees(emp_id) on delete cascade,
+	phn_type varchar2(4),
+	phn_number varchar2(10),
+
+	primary key(emp_id, phn_type)	
+);
