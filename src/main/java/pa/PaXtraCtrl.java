@@ -55,6 +55,9 @@ public class PaXtraCtrl {
 	@Autowired
 	pa.x6.EmployeeRep repoX6Emp;
 
+	@Autowired
+	pa.x6a.EmployeeRep repoX6aEmp;
+
 	@GetMapping("/xtra1")
 	public String xtra1(Model model) {
 		// Table Generator for PK
@@ -199,5 +202,22 @@ public class PaXtraCtrl {
 		model.addAttribute("employees", repoX6Emp.findAll());
 		model.addAttribute("messages", messages);
 		return "xtra6";
+	}
+
+	@GetMapping("/xtra6a")
+	public String xtra6a(Model model) {
+		// Sorted Element Collection
+		List<String> messages = new ArrayList<>();
+
+		Random random = new Random();
+		List<String> phones = new ArrayList<>();
+		for(int i = 0; i < 3; i++) {
+			phones.add(Integer.toString(random.nextInt(9_000) + 1_000));
+		}
+		messages.add("saving " + repoX6aEmp.save(new pa.x6a.Employee(phones)));
+
+		model.addAttribute("employees", repoX6aEmp.findAll());
+		model.addAttribute("messages", messages);
+		return "xtra6a";
 	}
 }
