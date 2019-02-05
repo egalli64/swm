@@ -1,17 +1,14 @@
 --
--- Sequence Table Generator
-
-create table x1_employees(
-    id integer primary key
-);
+-- sequence table generator
 
 create table x_table_generator(
     sequence_name varchar(20),
     next_val integer
 );
 
--- drop table x1_employees;
--- drop table x_table_generator;
+create table x1_employees(
+    id integer primary key
+);
 
 --
 -- OneToOne
@@ -20,15 +17,10 @@ create table x2_workstations(
     wst_id integer primary key
 );
 
--- drop table x2_workstations;
--- select * from x2_workstations;
-
 create table x2_employees(
     emp_id integer primary key,
     wst_id integer referencing x2_workstations(wst_id) unique
 );
-
--- drop table x2_employees;
 
 --
 -- ManyToOne
@@ -46,23 +38,22 @@ create table x3_employees(
 -- ManyToMany
 
 create table x4_employees(
-    emp_id integer primary KEY
+    emp_id integer primary key
 );
 
-
 create table x4_projects(
-    prj_id integer primary KEY
+    prj_id integer primary key
 );
 
 create table x4_emp_prj(
-    emp_id integer REFERENCES x4_employees(emp_id) ON DELETE CASCADE,
-    prj_id integer REFERENCES x4_projects(prj_id) ON DELETE CASCADE,
+    emp_id integer references x4_employees(emp_id) on delete cascade,
+    prj_id integer references x4_projects(prj_id) on delete cascade,
 	
 	primary key(emp_id, prj_id)
 );
 
 --
--- Unidirectional One-to-Many
+-- unidirectional one-to-many
 
 create table x5_departments(
     dep_id integer primary key
@@ -73,11 +64,22 @@ create table x5_employees(
 );
 
 create table x5_dep_emp(
-    dep_id integer REFERENCES x4_projects(prj_id) ON DELETE CASCADE,
-    emp_id integer REFERENCES x4_employees(emp_id) ON DELETE CASCADE unique,
+    dep_id integer references x5_departments(dep_id) on delete cascade,
+    emp_id integer references x5_employees(emp_id) on delete cascade unique,
 	
 	primary key(dep_id, emp_id)
 );
 
-DROP TABLE x5_dep_emp;
+--
+-- collection
 
+create table x6_employees(
+    emp_id integer primary key
+);
+
+create table x6_employee_phones(
+    emp_id integer references x6_employees(emp_id) on delete cascade,
+	phone varchar2(10),
+
+	primary key(emp_id, phone)	
+);
