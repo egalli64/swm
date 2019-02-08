@@ -25,7 +25,7 @@
 	</table>
 
 	<br/>
-	<form action="/regions/select">
+	<form action="/region">
 		<label>Get region by id: <select name="id">
 			<option th:each="cur: ${regions}" th:value="${cur.id}"
 				th:text="${cur.id}">1</option>
@@ -47,7 +47,7 @@
 	</form>
 
 	<h2>Create new region:</h2>
-	<form action="/regions/save">
+	<form action="/region/save">
 		<label>Id: <input name="id" required="required"></label>
 		<label>Name: <input name="name" required="required"></label>
 		<div>
@@ -56,7 +56,7 @@
 	</form>
 
 	<h2>Edit region:</h2>
-	<form action="/regions/save">
+	<form action="/region/save">
 		<label>Id: <select name="id">
 			<option th:each="cur: ${regions}" th:value="${cur.id}"
 				th:text="${cur.id}">...</option>
@@ -69,7 +69,7 @@
 
 
 	<h2>Delete region:</h2>
-	<form action="/regions/delete">
+	<form action="/region/delete">
 		<select name="id">
 			<option th:each="cur: ${regions}" th:value="${cur.id}"
 				th:text="${cur.name}">...</option>
