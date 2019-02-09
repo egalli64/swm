@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Adding JavaScript</title>
-<!-- script src="js/jquery-3.3.1.min.js"></script-->
+<title>Using JQuery</title>
+<script src="js/jquery-3.3.1.min.js"></script>
 <!-- script src="//code.jquery.com/jquery-3.3.1.min.js"></script-->
 <script>
 	// alert('hello world!');
@@ -22,27 +22,8 @@
 		var score = 42;
 		$('textarea').append('Your score is ' + score + '\n');
 
-		var days = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
-		$('textarea').append('Today is ' + days[1] + '\n');
-
-		days.push('Faraway');
-		$('textarea').append('Last days is ' + days[days.length - 1] + '\n');
-
-		days.unshift('Past');
-		$('textarea').append('First day is ' + days[0] + '\n');
-
-		$('textarea').append('Popping last day: ' + days.pop() + '\n');
-		$('textarea').append('Shifting first day: ' + days.shift() + '\n');
-		$('textarea').append('My days: ' + days + '\n');
-
-		for (var i = 0; i < days.length; i++) {
-			$('textarea').append('[' + i + ': ' + days[i] + ']');
-		}
-		$('textarea').append('\n');
-
-		var now = new Date();
-		$('textarea').append(generateMessage(name, now) + '\n');
-
+		$('textarea').append(generateMessage(name, new Date()) + '\n');
+		
 		// jquery access by id
 		//$('#signature').text('Hello by JQuery');
 
@@ -105,12 +86,12 @@
 </head>
 <body>
 	<p>
-		Back to <a href="/simple2.html">previous</a> page<br />
+		Back to <a href="/simpleJs.html">previous</a> page<br />
 		Back to <a href="/index.html">home</a> page
 	</p>
 
 	<h2 hidden=true>A simple page</h2>
-	<textarea rows="20" cols="80"></textarea>
+	<textarea rows="10" cols="80"></textarea>
 	<p id='signature'>&copy; ACME Inc. 2019</p>
 	<hr />
 	<p id="pmsg">

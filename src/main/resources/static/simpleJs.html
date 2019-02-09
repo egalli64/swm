@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello JavaScript</title>
+</head>
+<body>
+	<h1>Hello JavaScript</h1>
+	<p>
+		Back to <a href="/simple2.html">previous</a> page<br />
+		Forward to <a href="/simpleJq.html">next</a> page
+	</p>
+	
+	<textarea id="target" rows="20" cols="80"></textarea>
+	<script type="text/javascript">
+		document.write("<p>JavaScript has been here</p>")
+
+		// logging
+		console.log('Something is going on');		
+
+		// let vs var
+		let target = document.getElementById('target');
+		target.value += 'hello\n';
+		
+		// number, string
+		let result = 39 + 3;
+		target.value += 'result is ' + result + '\n';
+		target.value += 'result is a ' + typeof(result) + '\n';
+		
+		// boolean
+		target.value += 'result is 42? ' + (result == 42) + '\n';
+
+		var now = new Date();
+		target.value += now + '\n';
+		target.value += now.toDateString() + '\n';
+		
+		//
+		// array
+		let days = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
+		target.value += 'Today is ' + days[1] + '\n';
+
+		// array of objects
+		days.push(result);
+		target.value += 'Last days is ' + days[days.length - 1] + '\n';
+
+		// null
+		days.unshift(null);
+		target.value += 'First day is ' + days[0] + '\n';
+
+		target.value += 'Popping last day: ' + days.pop() + '\n';
+		target.value += 'Shifting first day: ' + days.shift() + '\n';
+		target.value += 'My days: ' + days + '\n';
+
+		for (let i = 0; i < days.length; i++) {
+			target.value += '[' + i + ': ' + days[i] + ']';
+		}
+		target.value += '\n';
+		
+		// strictly equals
+		let a = '42', b = 42;
+		if(a == b) {
+			target.value += a + ' ' + typeof(a) + ' == ' + b + ' ' + typeof(b) + '\n';			
+		}
+		if(a !== b) {
+			target.value += a + ' ' + typeof(a) + ' !== ' + b + ' ' + typeof(b) + '\n';			
+		}
+
+		// parseInt
+		let c = parseInt(a);
+		if(b === c) {
+			target.value += a + ' ' + typeof(a) + ' === ' + b + ' ' + typeof(b) + '\n';			
+		}
+
+		// number precision
+		let f = 10 / 3;
+		target.value += f + '\n';
+		target.value += f.toFixed(2) + '\n';
+		target.value += 'No decimal: ' + f.toFixed(0) + '\n';
+		
+		// not a number
+		let d = parseInt(now);
+		if(isNaN(d)) {
+			target.value += d + '\n';
+		}
+
+		// defining a function
+		function appendTo(target, message) {
+			target.value += message + '\n';
+		}
+
+		appendTo(target, now.toDateString());
+		appendTo(target, now.toDateString().toUpperCase());
+	</script>
+</body>
+</html>
