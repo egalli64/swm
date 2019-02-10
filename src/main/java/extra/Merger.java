@@ -1,7 +1,7 @@
 package extra;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 class Node {
     private int value;
@@ -61,7 +61,7 @@ public class Merger {
         return cur;
     }
 
-    public static Node merge(Node lhs, Node rhs) {
+    public static Node mergeReversed(Node lhs, Node rhs) {
         if (lhs == null) {
             return rhs;
         }
@@ -69,7 +69,7 @@ public class Merger {
             return lhs;
         }
 
-        List<Node> nodes = new ArrayList<>();
+        LinkedList<Node> nodes = new LinkedList<>();
 
         while (lhs != null && rhs != null) {
             if (lhs.getValue() < rhs.getValue()) {
@@ -81,10 +81,44 @@ public class Merger {
             }
         }
 
-        Node head = nodes.get(0);
+        Node tail = lhs == null ? rhs : lhs;
+        nodes.removeLast().setNext(tail);
+
+        Iterator<Node> it = nodes.descendingIterator();
+        while (it.hasNext()) {
+            Node cur = it.next();
+            cur.setNext(tail);
+            tail = cur;
+        }
+        return nodes.getFirst();
+    }
+
+    public static Node merge(Node lhs, Node rhs) {
+        if (lhs == null) {
+            return rhs;
+        }
+        if (rhs == null) {
+            return lhs;
+        }
+
+        Node head;
+        if (lhs.getValue() < rhs.getValue()) {
+            head = lhs;
+            lhs = lhs.getNext();
+        } else {
+            head = rhs;
+            rhs = rhs.getNext();
+        }
+
         Node cur = head;
-        for (int i = 1; i < nodes.size(); i++) {
-            cur.setNext(nodes.get(i));
+        while (lhs != null && rhs != null) {
+            if (lhs.getValue() < rhs.getValue()) {
+                cur.setNext(lhs);
+                lhs = lhs.getNext();
+            } else {
+                cur.setNext(rhs);
+                rhs = rhs.getNext();
+            }
             cur = cur.getNext();
         }
 

@@ -22,6 +22,22 @@ class MergerTest {
     }
 
     @Test
+    void mergeReversedPlain() {
+        Node left = new Node(1, new Node(2, new Node(3)));
+        Node right = new Node(2, new Node(3, new Node(4)));
+        Node merged = Merger.mergeReversed(left, right);
+
+        int cur = merged.getValue();
+        assertEquals(cur, 1);
+        while((merged = merged.getNext()) != null) {
+            int prev = cur;
+            cur = merged.getValue();
+            assertFalse(cur < prev);
+        }
+        assertEquals(cur, 4);
+    }
+
+    @Test
     void mergeRecursivePlain() {
         Node left = new Node(1, new Node(2, new Node(3)));
         Node right = new Node(2, new Node(3, new Node(4)));
@@ -42,6 +58,22 @@ class MergerTest {
         Node left = null;
         Node right = new Node(2, new Node(3, new Node(4)));
         Node merged = Merger.merge(left, right);
+
+        int cur = merged.getValue();
+        assertEquals(cur, 2);
+        while((merged = merged.getNext()) != null) {
+            int prev = cur;
+            cur = merged.getValue();
+            assertFalse(cur < prev);
+        }
+        assertEquals(cur, 4);
+    }
+
+    @Test
+    void mergeReversedLeftNull() {
+        Node left = null;
+        Node right = new Node(2, new Node(3, new Node(4)));
+        Node merged = Merger.mergeReversed(left, right);
 
         int cur = merged.getValue();
         assertEquals(cur, 2);
@@ -86,10 +118,42 @@ class MergerTest {
     }
 
     @Test
+    void mergeReversedRightOne() {
+        Node left = new Node(1, new Node(2, new Node(3)));
+        Node right = new Node(4);
+        Node merged = Merger.mergeReversed(left, right);
+
+        int cur = merged.getValue();
+        assertEquals(cur, 1);
+        while((merged = merged.getNext()) != null) {
+            int prev = cur;
+            cur = merged.getValue();
+            assertFalse(cur < prev);
+        }
+        assertEquals(cur, 4);
+    }
+
+    @Test
     void mergeRecursiveRightOne() {
         Node left = new Node(1, new Node(2, new Node(3)));
         Node right = new Node(4);
         Node merged = Merger.mergeRecursive(left, right);
+
+        int cur = merged.getValue();
+        assertEquals(cur, 1);
+        while((merged = merged.getNext()) != null) {
+            int prev = cur;
+            cur = merged.getValue();
+            assertFalse(cur < prev);
+        }
+        assertEquals(cur, 4);
+    }
+
+    @Test
+    void mergeReversedLeftOne() {
+        Node right = new Node(1, new Node(2, new Node(3)));
+        Node left = new Node(4);
+        Node merged = Merger.mergeReversed(left, right);
 
         int cur = merged.getValue();
         assertEquals(cur, 1);
