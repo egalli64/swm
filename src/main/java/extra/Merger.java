@@ -1,5 +1,8 @@
 package extra;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Node {
     private int value;
     private Node next;
@@ -39,7 +42,7 @@ class Node {
 }
 
 public class Merger {
-    public static Node merge(Node lhs, Node rhs) {
+    public static Node mergeRecursive(Node lhs, Node rhs) {
         if (lhs == null) {
             return rhs;
         }
@@ -50,11 +53,42 @@ public class Merger {
         Node cur = null;
         if (lhs.getValue() < rhs.getValue()) {
             cur = lhs;
-            cur.setNext(merge(lhs.getNext(), rhs));
+            cur.setNext(mergeRecursive(lhs.getNext(), rhs));
         } else {
             cur = rhs;
-            cur.setNext(merge(lhs, rhs.getNext()));
+            cur.setNext(mergeRecursive(lhs, rhs.getNext()));
         }
         return cur;
+    }
+
+    public static Node merge(Node lhs, Node rhs) {
+        if (lhs == null) {
+            return rhs;
+        }
+        if (rhs == null) {
+            return lhs;
+        }
+
+        List<Node> nodes = new ArrayList<>();
+
+        while (lhs != null && rhs != null) {
+            if (lhs.getValue() < rhs.getValue()) {
+                nodes.add(lhs);
+                lhs = lhs.getNext();
+            } else {
+                nodes.add(rhs);
+                rhs = rhs.getNext();
+            }
+        }
+
+        Node head = nodes.get(0);
+        Node cur = head;
+        for (int i = 1; i < nodes.size(); i++) {
+            cur.setNext(nodes.get(i));
+            cur = cur.getNext();
+        }
+
+        cur.setNext(lhs == null ? rhs : lhs);
+        return head;
     }
 }
