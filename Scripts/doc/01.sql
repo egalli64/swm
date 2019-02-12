@@ -28,6 +28,21 @@ create user me identified by password account unlock;
 grant connect, resource to me;
 alter user me quota unlimited on users;
 
+-- TNSNAMES.ORA
+-- match pdb w/ relative service
+-- ORCLPDB =
+--   (DESCRIPTION =
+--     (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))
+--     (CONNECT_DATA =
+--       (SERVER = DEDICATED)
+--       (SERVICE_NAME = orclpdb)
+--     )
+--   )
+
+-- refresh the oracle listener (as windows admin)
+-- lsnrctl reload
+
+
 -- now we can connect to sqlplus as hr/hr@orclpdb me/password@orclpdb
 
 -- SQL Developer setup
