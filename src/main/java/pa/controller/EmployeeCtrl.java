@@ -17,139 +17,147 @@ import pa.model.EmployeeRepository;
 
 @Controller
 public class EmployeeCtrl {
-	private static final Logger logger = LoggerFactory.getLogger(EmployeeCtrl.class);
-	private static final String CODER = "IT_PROG";
+    private static final Logger logger = LoggerFactory.getLogger(EmployeeCtrl.class);
+    private static final String CODER = "IT_PROG";
 
-	@Autowired
-	EmployeeRepository repo;
+    @Autowired
+    EmployeeRepository repo;
 
-	@GetMapping("/employees")
-	public String allEmployees(Model model) {
-		logger.debug("All employees");
-		model.addAttribute("employees", repo.findAll());
-		return "employees";
-	}
+    @GetMapping("/employees")
+    public String allEmployees(Model model) {
+        logger.debug("All employees");
+        model.addAttribute("employees", repo.findAll());
+        return "employees";
+    }
 
-	@GetMapping("/employees/find")
-	public String find( //
-			@RequestParam long id, //
-			Model model) {
-		logger.debug("Find employee by id: " + id);
+    @GetMapping("/hEmployees")
+    public String hEmployees(Model model) {
+        logger.debug("All employees with character h");
+        model.addAttribute("employees", repo.findWhereNameContainsH());
+        model.addAttribute("h", true);
+        return "employees";
+    }
 
-		Optional<Employee> employee = repo.findById(id);
-		if(employee.isPresent()) {
-			model.addAttribute("employee", employee.get());			
-		} else {
-			model.addAttribute("id", id);
-		}
-		return "employee";
-	}
+    @GetMapping("/employee")
+    public String find( //
+            @RequestParam long id, //
+            Model model) {
+        logger.debug("Find employee by id: " + id);
 
-	@GetMapping("/coders")
-	public String allCoders(Model model) {
-		logger.debug("All coders");
-		model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
-		return "coders";
-	}
+        Optional<Employee> employee = repo.findById(id);
+        if (employee.isPresent()) {
+            model.addAttribute("employee", employee.get());
+        } else {
+            model.addAttribute("id", id);
+        }
+        return "employee";
+    }
 
-	@GetMapping("/coders/order")
-	public String orderCoders( //
-			@RequestParam String by, //
-			Model model) {
-		logger.debug("Order coders by " + by);
+    @GetMapping("/coders")
+    public String allCoders(Model model) {
+        logger.debug("All coders");
+        model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
+        return "coders";
+    }
 
-		List<Employee> coders;
-		switch (by) {
-		case "First":
-			coders = repo.findByJobIdOrderByFirstName(CODER);
-			break;
-		case "Last":
-			coders = repo.findByJobIdOrderByLastName(CODER);
-			break;
-		default:
-			coders = repo.findByJobIdOrderById(CODER);
-			break;
-		}
+    @GetMapping("/coders/order")
+    public String orderCoders( //
+            @RequestParam String by, //
+            Model model) {
+        logger.debug("Order coders by " + by);
 
-		model.addAttribute("employees", coders);
-		return "coders";
-	}
+        List<Employee> coders;
+        switch (by) {
+        case "First":
+            coders = repo.findByJobIdOrderByFirstName(CODER);
+            break;
+        case "Last":
+            coders = repo.findByJobIdOrderByLastName(CODER);
+            break;
+        default:
+            coders = repo.findByJobIdOrderById(CODER);
+            break;
+        }
 
-	@GetMapping("/coders/create")
-	public String createCoder( //
-			@RequestParam String first, //
-			@RequestParam String last, //
-			Model model) {
-		logger.debug("Create coder");
-		try {
-			repo.save(new Employee(first, last, CODER));
-			model.addAttribute("message", String.format("Coder %s %s correctly created", first, last));
-		} catch (DataIntegrityViolationException dive) {
-			String message = String.format("Can't create coder %s %s", first, last);
-			logger.error(message);
-			model.addAttribute("message", message);
-		}
-		model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
-		return "coders";
-	}
+        model.addAttribute("employees", coders);
+        return "coders";
+    }
 
-	@GetMapping("/coders/save")
-	public String saveCoder( //
-			@RequestParam long id, //
-			@RequestParam String first, //
-			@RequestParam String last, //
-			Model model) {
-		logger.debug("Save coder");
+    @GetMapping("/coders/create")
+    public String createCoder( //
+            @RequestParam String first, //
+            @RequestParam String last, //
+            Model model) {
+        logger.debug("Create coder");
+        try {
+            repo.save(new Employee(first, last, CODER));
+            model.addAttribute("message", String.format("Coder %s %s correctly created", first, last));
+        } catch (DataIntegrityViolationException dive) {
+            String message = String.format("Can't create coder %s %s", first, last);
+            logger.error(message);
+            model.addAttribute("message", message);
+        }
+        model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
+        return "coders";
+    }
 
-		Optional<Employee> opt = repo.findByIdAndJobId(id, CODER);
-		if (!opt.isPresent()) {
-			model.addAttribute("message", "There is no coder with id " + id);
-		} else {
-			Employee employee = opt.get();
-			if (first != null) {
-				employee.setFirstName(first);
-			}
-			if (last != null) {
-				employee.setLastName(last);
-			}
-			if (first != null || last != null) {
-				employee.setDefaultEmail();
-			}
-			try {
-				repo.save(employee);
-				model.addAttribute("message", String.format("Coder %s %s correctly saved", first, last));
-			} catch (Exception ex) {
-				String message = String.format("Can't save coder %s %s", first, last);
-				logger.error(message, ex);
-				model.addAttribute("message", message);
-			}
-		}
+    @GetMapping("/coders/save")
+    public String saveCoder( //
+            @RequestParam long id, //
+            @RequestParam String first, //
+            @RequestParam String last, //
+            Model model) {
+        logger.debug("Save coder");
 
-		model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
-		return "coders";
-	}
+        Optional<Employee> opt = repo.findByIdAndJobId(id, CODER);
+        if (!opt.isPresent()) {
+            model.addAttribute("message", "There is no coder with id " + id);
+        } else {
+            Employee employee = opt.get();
+            if (first != null) {
+                employee.setFirstName(first);
+            }
+            if (last != null) {
+                employee.setLastName(last);
+            }
+            if (first != null || last != null) {
+                employee.setDefaultEmail();
+            }
+            try {
+                repo.save(employee);
+                model.addAttribute("message", String.format("Coder %s %s correctly saved", first, last));
+            } catch (Exception ex) {
+                String message = String.format("Can't save coder %s %s", first, last);
+                logger.error(message, ex);
+                model.addAttribute("message", message);
+            }
+        }
 
-	@GetMapping("/coders/delete")
-	public String deleteCoder( //
-			@RequestParam long id, //
-			Model model) {
-		logger.debug("Delete coder " + id);
+        model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
+        return "coders";
+    }
 
-		Optional<Employee> opt = repo.findByIdAndJobId(id, CODER);
-		if(!opt.isPresent()) {
-			model.addAttribute("message", "There is no coder with id " + id);			
-		} else {
-			try {
-				repo.deleteById(id);
-				model.addAttribute("message", String.format("Coder %d removed", id));
-			} catch (Exception ex) {
-				String message = "Can't delete coder " + id;
-				logger.error(message, ex);
-				model.addAttribute("message", message);
-			}			
-		}
+    @GetMapping("/coders/delete")
+    public String deleteCoder( //
+            @RequestParam long id, //
+            Model model) {
+        logger.debug("Delete coder " + id);
 
-		model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
-		return "coders";
-	}
+        Optional<Employee> opt = repo.findByIdAndJobId(id, CODER);
+        if (!opt.isPresent()) {
+            model.addAttribute("message", "There is no coder with id " + id);
+        } else {
+            try {
+                repo.deleteById(id);
+                model.addAttribute("message", String.format("Coder %d removed", id));
+            } catch (Exception ex) {
+                String message = "Can't delete coder " + id;
+                logger.error(message, ex);
+                model.addAttribute("message", message);
+            }
+        }
+
+        model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
+        return "coders";
+    }
 }

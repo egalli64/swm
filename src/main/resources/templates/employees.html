@@ -6,13 +6,13 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
-	<h1>Employees</h1>
+	<h1>Employees<span th:if="${h}" th:text="' with an h in their name'"></span></h1>
 
 	<h2>Employee details:</h2>
-	<form action="/employees/find">
+	<form action="/employee">
 		<select name="id">
 			<option th:each="cur: ${employees}" th:value="${cur.id}"
-				th:text="|${cur.lastName} ${cur.firstName}| ">Linus Torvalds</option>
+				th:text="|${cur.firstName} ${cur.lastName}| ">Linus Torvalds</option>
 		</select>
 		<div>
 			<button>Go!</button>
