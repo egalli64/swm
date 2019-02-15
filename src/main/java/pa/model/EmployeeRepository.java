@@ -3,6 +3,9 @@ package pa.model;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 
 public interface EmployeeRepository extends CrudRepository<Employee, Long> {
@@ -18,4 +21,8 @@ public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
     // @Query ... moved in META-INF/jpa-named-queries.properties
     List<Employee> findWhereNameContainsH();
+    
+    Page<Employee> findByJobId(String jobId, Pageable pageable);
+    List<Employee> findByJobId_(String jobId, Pageable pageable);
+    List<Employee> findByJobId(String jobId, Sort sort);
 }

@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
-	<h1>Employees<span th:if="${h}" th:text="' with an h in their name'"></span></h1>
+	<h1>Employees<span th:if="${msg}" th:text="${msg}"></span></h1>
 
 	<h2>Employee details:</h2>
 	<form action="/employee">

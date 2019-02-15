@@ -7,6 +7,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +39,46 @@ public class EmployeeCtrl {
     public String hEmployees(Model model) {
         logger.debug("All employees with character h");
         model.addAttribute("employees", repo.findWhereNameContainsH());
-        model.addAttribute("h", true);
+        model.addAttribute("msg", " with an h in their name");
+        return "employees";
+    }
+
+    @GetMapping("/pagedStClerk")
+    public String pagedEmployees( //
+            @RequestParam int page, //
+            Model model) {
+        logger.debug("Paged employees");
+
+        Pageable pageable = PageRequest.of(page, 5, Direction.ASC, "firstName");
+        Page<Employee> result = repo.findByJobId("ST_CLERK", pageable);
+
+        model.addAttribute("employees", result);
+        model.addAttribute("msg", " paged st_clerks");
+        return "employees";
+    }
+
+    @GetMapping("/pagedStClerk2")
+    public String pagedEmployees2( //
+            @RequestParam int page, //
+            Model model) {
+        logger.debug("Paged employees /2");
+
+        Pageable pageable = PageRequest.of(page, 5, Direction.ASC, "firstName");
+        List<Employee> result = repo.findByJobId_("ST_CLERK", pageable);
+
+        model.addAttribute("employees", result);
+        model.addAttribute("msg", " paged st_clerks");
+        return "employees";
+    }
+
+    @GetMapping("/sortedStClerk")
+    public String sortedEmployees(Model model) {
+        logger.debug("Sorted employees");
+
+        List<Employee> result = repo.findByJobId("ST_CLERK", Sort.by(Direction.ASC, "lastName"));
+
+        model.addAttribute("employees", result);
+        model.addAttribute("msg", " st_clerks sorted by last name");
         return "employees";
     }
 
