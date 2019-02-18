@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -20,7 +21,7 @@ public class Organization {
 	@Column(name = "ORG_NAME")
 	private String name;
 
-	@ManyToMany
+	@ManyToMany(fetch= FetchType.EAGER)
 	@JoinTable(name = "ORG_COUNTRY", //
 			joinColumns = @JoinColumn(name = "ORG_ID"), //
 			inverseJoinColumns = @JoinColumn(name = "COUNTRY_ID"))
