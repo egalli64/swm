@@ -37,7 +37,7 @@ public class OrganizationCtrl {
                 countriesSize = size;
         }
 
-        model.addAttribute("organizations", repo.findAll());
+        model.addAttribute("organizations", organizations);
         model.addAttribute("countriesSize", countriesSize);
         return "organizations";
     }
