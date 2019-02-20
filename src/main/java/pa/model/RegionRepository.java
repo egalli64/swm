@@ -13,4 +13,7 @@ public interface RegionRepository extends CrudRepository<Region, Long> {
 
     @Query("select r.name from Region r")
     List<String> myFindAllNames();
+
+    @Query("select r from Region r where r.name like 'A%'")
+    List<String> myStartingByA();
 }

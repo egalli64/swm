@@ -71,6 +71,7 @@ public class RegionCtrl {
         logger.debug("Get my regions");
         model.addAttribute("all", repo.myFindAll());
         model.addAttribute("allNames", repo.myFindAllNames());
+        model.addAttribute("aRegions", repo.myStartingByA());
         return "/my/regions";
     }
 
