@@ -1,0 +1,16 @@
+The Java Language Specification
+https://docs.oracle.com/javase/specs/jls/se11/jls11.pdf
+https://docs.oracle.com/javase/specs/jls/se8/jls8.pdf
+https://docs.oracle.com/javase/specs/jls/se6/jls3.pdf
+
+HTML on MDN
+https://developer.mozilla.org/en-US/docs/Web/HTML
+
+JavaScript on MDN
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
+Spring Data JPA - Reference Documentation
+https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
+
+Thymeleaf
+https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.pdf
