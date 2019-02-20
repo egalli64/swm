@@ -1,4 +1,12 @@
 -- hr has granted select on countries, regions, and employees to me
+
+drop sequence employees_seq;
+drop table org_country;
+drop table organizations;
+drop table employees;
+drop table countries;
+drop table regions;
+
 create table regions(
     region_id number constraint regions_pk primary key, 
     region_name varchar2(25)
@@ -56,8 +64,3 @@ insert into org_country values(1, 'FR');
 insert into org_country values(2, 'IT');
 insert into org_country values(2, 'FR');
 insert into org_country values(2, 'US');
-
--- select c.country_name, o.org_name
--- from org_country natural join organizations o natural join countries c
--- order by 1, 2;
-

@@ -19,6 +19,12 @@ WHERE REGION_ID = 1;
 
 SELECT * FROM ORG_COUNTRY;
 
+SELECT * FROM REGIONS;
+
+-- select c.country_name, o.org_name
+-- from org_country natural join organizations o natural join countries c
+-- order by 1, 2;
+
 INSERT INTO COUNTRIES values('ES', 'Spain', 1);
 INSERT INTO ORG_COUNTRY values(3, 'ES');
 DELETE FROM COUNTRIES WHERE COUNTRY_ID = 'ES';
