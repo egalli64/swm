@@ -18,7 +18,7 @@
 
 	<fieldset>
 		<legend>Hello</legend>
-		<form name="frmLog" action="login" method="post"
+		<form name="frmLog" action="/login" method="post"
 			onsubmit="return checkUser()">
 			<div>
 				<label for="userId">User:</label>
@@ -34,7 +34,7 @@
 
 	<fieldset>
 		<legend>GET is not a good idea here</legend>
-		<form action="login" method="get">
+		<form action="/login" method="get">
 			<div>
 				<label>User: <input name="user" /></label>
 				<label>Password: <input name="password" type="password"></label>
