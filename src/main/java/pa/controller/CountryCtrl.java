@@ -18,104 +18,114 @@ import pa.model.RegionRepository;
 
 @Controller
 public class CountryCtrl {
-	private static final Logger logger = LoggerFactory.getLogger(CountryCtrl.class);
+    private static final Logger logger = LoggerFactory.getLogger(CountryCtrl.class);
 
-	@Autowired
-	CountryRepository repo;
+    @Autowired
+    CountryRepository repo;
 
-	@Autowired
-	RegionRepository regionRepo;
+    @Autowired
+    RegionRepository regionRepo;
 
-	@GetMapping("/countries")
-	public String allCountries(Model model) {
-		logger.debug("All countries");
-		model.addAttribute("countries", repo.findAll());
-		return "countries";
-	}
+    @GetMapping("/countries")
+    public String allCountries(Model model) {
+        logger.debug("All countries");
+        model.addAttribute("countries", repo.findAll());
+        return "countries";
+    }
 
-	@GetMapping("/countries/select")
-	public String selectCountry( //
-			@RequestParam String id, //
-			Model model) {
-		logger.debug("Select country with id " + id);
+    @GetMapping("/countries/select")
+    public String selectCountry( //
+            @RequestParam String id, //
+            Model model) {
+        logger.debug("Select country with id " + id);
 
-		Optional<Country> country = repo.findById(id.toUpperCase());
-		model.addAttribute("country", country.orElse(new Country(id, "unknown", null)));
-		return "country";
-	}
+        Optional<Country> country = repo.findById(id.toUpperCase());
+        model.addAttribute("country", country.orElse(new Country(id, "unknown", null)));
+        return "country";
+    }
 
-	@GetMapping("/countries/startingBy")
-	public String startingBy( //
-			@RequestParam String name, //
-			Model model) {
-		logger.debug("countries starting by " + name);
-		List<Country> countries = repo.findByNameLikeIgnoreCase(name + "%");
+    @GetMapping("/countries/startingBy")
+    public String startingBy( //
+            @RequestParam String name, //
+            Model model) {
+        logger.debug("countries starting by " + name);
+        List<Country> countries = repo.findByNameLikeIgnoreCase(name + "%");
 
-		model.addAttribute("message", " with name starting by " + name);
-		model.addAttribute("countries", countries);
-		return "countries";
-	}
+        model.addAttribute("message", " with name starting by " + name);
+        model.addAttribute("countries", countries);
+        return "countries";
+    }
 
-	@GetMapping("/countries/region")
-	public String countriesByRegion( //
-			@RequestParam long id, //
-			Model model) {
-		Optional<Region> region = regionRepo.findById(id);
-		logger.debug("Countries by region " + id);
+    @GetMapping("/countries/region")
+    public String countriesByRegion( //
+            @RequestParam long id, //
+            Model model) {
+        Optional<Region> region = regionRepo.findById(id);
+        logger.debug("Countries by region " + id);
 
-		if (region.isPresent()) {
-			Region cur = region.get();
-			List<Country> countries = repo.findByRegion(cur);
-			model.addAttribute("countries", countries);
-			model.addAttribute("region", cur);
-		} else {
-			model.addAttribute("region", new Region(id, ""));
-		}
+        if (region.isPresent()) {
+            Region cur = region.get();
+            List<Country> countries = repo.findByRegion(cur);
+            model.addAttribute("countries", countries);
+            model.addAttribute("region", cur);
+        } else {
+            model.addAttribute("region", new Region(id, ""));
+        }
 
-		return "countriesByRegion";
-	}
+        return "countriesByRegion";
+    }
 
-	@GetMapping("/countries/save")
-	public String saveCountry( //
-			@RequestParam String cid, //
-			@RequestParam String name, //
-			@RequestParam long rid, //
-			Model model) {
-		Optional<Region> region = regionRepo.findById(rid);
-		if (region.isPresent()) {
-			Region cur = region.get();
-			Country country = new Country(cid.toUpperCase(), name, cur);
-			logger.debug("Save country " + country);
-			repo.save(country);
-			model.addAttribute("region", cur);
-			model.addAttribute("countries", repo.findByRegion_id(rid));
-			return "countriesByRegion";
-		} else {
-			logger.error(String.format("Can't save country %d: missing region %d", cid, rid));
-			model.addAttribute("countries", repo.findAll());
-			return "countries";
-		}
-	}
+    @GetMapping("/countries/save")
+    public String saveCountry( //
+            @RequestParam String cid, //
+            @RequestParam String name, //
+            @RequestParam long rid, //
+            Model model) {
+        Optional<Region> region = regionRepo.findById(rid);
+        if (region.isPresent()) {
+            Region cur = region.get();
+            Country country = new Country(cid.toUpperCase(), name, cur);
+            logger.debug("Save country " + country);
+            repo.save(country);
+            model.addAttribute("region", cur);
+            model.addAttribute("countries", repo.findByRegion_id(rid));
+            return "countriesByRegion";
+        } else {
+            logger.error(String.format("Can't save country %d: missing region %d", cid, rid));
+            model.addAttribute("countries", repo.findAll());
+            return "countries";
+        }
+    }
 
-	@GetMapping("/countries/delete")
-	public String deleteCountry( //
-			@RequestParam String cid, //
-			@RequestParam long rid, //
-			Model model) {
-		logger.debug("Delete country " + cid);
+    @GetMapping("/countries/delete")
+    public String deleteCountry( //
+            @RequestParam String cid, //
+            @RequestParam long rid, //
+            Model model) {
+        logger.debug("Delete country " + cid);
 
-		repo.deleteById(cid);
+        repo.deleteById(cid);
 
-		Optional<Region> region = regionRepo.findById(rid);
-		if (region.isPresent()) {
-			Region cur = region.get();
-			model.addAttribute("region", cur);
-			model.addAttribute("countries", repo.findByRegion(cur));
-			return "countriesByRegion";
-		} else {
-			logger.warn("Missing region " + rid);
-			model.addAttribute("countries", repo.findAll());
-			return "countries";
-		}
-	}
+        Optional<Region> region = regionRepo.findById(rid);
+        if (region.isPresent()) {
+            Region cur = region.get();
+            model.addAttribute("region", cur);
+            model.addAttribute("countries", repo.findByRegion(cur));
+            return "countriesByRegion";
+        } else {
+            logger.warn("Missing region " + rid);
+            model.addAttribute("countries", repo.findAll());
+            return "countries";
+        }
+    }
+
+    @GetMapping("/my/countries")
+    public String myCountries(Model model) {
+        model.addAttribute("all", repo.findAll());
+        model.addAttribute("byName", repo.findAllByOrderByName());
+        model.addAttribute("byRegion", repo.findAllByOrderByRegion());
+        model.addAttribute("byRegName", repo.findAllByOrderByRegionAscNameAsc());
+        return "/my/countries";
+    }
+
 }
