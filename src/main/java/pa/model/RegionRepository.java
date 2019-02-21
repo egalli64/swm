@@ -16,4 +16,10 @@ public interface RegionRepository extends CrudRepository<Region, Long> {
 
     @Query("select r from Region r where r.name like 'A%'")
     List<String> myStartingByA();
+
+    @Query("select r.name from Region r join r.countries c where c.name = 'Italy'")
+    String myRegionNameForItaly();
+
+    @Query("select r.name from Region r join r.countries c where c.name = ?1")
+    String myRegionNameFor(String countryName);
 }
