@@ -72,6 +72,8 @@ public class RegionCtrl {
         model.addAttribute("all", repo.myFindAll());
         model.addAttribute("allNames", repo.myFindAllNames());
         model.addAttribute("aRegions", repo.myStartingByA());
+        model.addAttribute("itRegion", repo.myRegionNameForItaly());
+        model.addAttribute("frRegion", repo.myRegionNameFor("France"));
         return "/my/regions";
     }
 
