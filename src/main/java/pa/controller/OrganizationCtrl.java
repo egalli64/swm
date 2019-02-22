@@ -60,12 +60,11 @@ public class OrganizationCtrl {
 
     @GetMapping("/organization/save")
     public String saveOrganization( //
-            @RequestParam long id, //
             @RequestParam String name, //
             Model model) {
-        Organization org = new Organization(id, name);
-        logger.debug("Save organization " + org);
+        Organization org = new Organization(name);
         repo.save(org);
+        logger.debug("Save organization " + org);
 
         model.addAttribute("organizations", repo.findAll());
         return "organizations";
