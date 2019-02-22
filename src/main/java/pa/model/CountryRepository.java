@@ -2,6 +2,7 @@ package pa.model;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -20,4 +21,7 @@ public interface CountryRepository extends CrudRepository<Country, String> {
     List<Country> findAllByOrderByRegionAscNameAsc();
 
     List<Country> findAllByOrderByRegion_nameAscNameAsc();
+
+    @Query("select c from Country c join c.region r order by r.name, c.name")
+    List<Country> findAllByOrderByRegionNameCountryNameAlt();
 }
