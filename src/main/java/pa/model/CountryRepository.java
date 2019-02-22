@@ -18,4 +18,6 @@ public interface CountryRepository extends CrudRepository<Country, String> {
 	List<Country> findAllByOrderByName();
     List<Country> findAllByOrderByRegion();
     List<Country> findAllByOrderByRegionAscNameAsc();
+
+    List<Country> findAllByOrderByRegion_nameAscNameAsc();
 }
