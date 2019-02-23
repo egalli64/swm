@@ -124,7 +124,9 @@ public class CountryCtrl {
         model.addAttribute("all", repo.findAll());
         model.addAttribute("byName", repo.findAllByOrderByName());
         model.addAttribute("byRegion", repo.findAllByOrderByRegion());
-        model.addAttribute("byRegName", repo.findAllByOrderByRegionAscNameAsc());
+        model.addAttribute("byRegionAndName", repo.findAllByOrderByRegionAscNameAsc());
+        model.addAttribute("byRegionNameAndName", repo.findAllByOrderByRegion_nameAscNameAsc());
+        model.addAttribute("byRegionNameAndNameAlt", repo.findAllByOrderByRegionNameCountryNameAlt());
         return "/my/countries";
     }
 
