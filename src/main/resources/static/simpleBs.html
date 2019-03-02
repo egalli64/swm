@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Using Bootstrap</title>
+<meta charset="UTF-8">
+<!-- standard bootstrap viewport setup -->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- link rel="stylesheet" href="/css/bootstrap.min.css"-->
+</head>
+<body>
+	<!-- Bootstrap jumbotron: a block typically used for complex heading -->
+	<div class="jumbotron text-center">
+		<h1>A Bootstrap-based simple page</h1>
+	</div>
+
+	<p>
+		Back to <a href="/simpleJq.html">previous</a> page<br />
+		Back to <a href="/index.html">home</a> page
+	</p>
+
+	<!-- Bootstrap container: fixed width for each bootstrap screen size -->
+	<div class="container" style="background-color: #d3fefe;">
+		<h1>Hello from Bootstrap</h1>
+		<p>I'm a fixed width container</p>
+	</div>
+
+	<!-- Bootstrap container-fluid: always full width -->
+	<div class="container-fluid" style="background-color: #fefcd8;">
+		<h1>Hello from Bootstrap</h1>
+		<p>I'm a fluid width container</p>
+	</div>
+
+	<hr />
+	<p>A row with three equal width columns:</p>
+	<div class="row">
+		<div class="col" style="background-color: #d3fefe;">1</div>
+		<div class="col" style="background-color: #fefcd8;">2</div>
+		<div class="col" style="background-color: #d3fefe;">3</div>
+	</div>
+
+	<hr />
+	<p>If the viewport is less than small, row becomes column:</p>
+	<div class="row">
+		<div class="col-sm-4" style="background-color: #fefcd8;">1</div>
+		<div class="col-sm-4" style="background-color: #d3fefe;">2</div>
+		<div class="col-sm-4" style="background-color: #fefcd8;">3</div>
+	</div>
+
+	<hr />
+	<p>Same shift, keeping total size for row = 12:</p>
+	<div class="row">
+		<div class="col-sm-2" style="background-color: #fefcd8;">1</div>
+		<div class="col-sm-2" style="background-color: #d3fefe;">2</div>
+		<div class="col-sm-2" style="background-color: #fefcd8;">3</div>
+		<div class="col-sm-2" style="background-color: #d3fefe;">4</div>
+		<div class="col-sm-2" style="background-color: #fefcd8;">5</div>
+		<div class="col-sm-2" style="background-color: #d3fefe;">6</div>
+	</div>
+
+	<hr />
+	<p>A row with different (sm) sized columns:</p>
+	<div class="row">
+		<div class="col-sm-4" style="background-color: #fefcd8;">smaller</div>
+		<div class="col-sm-8" style="background-color: #d3fefe;">larger</div>
+	</div>
+
+	<hr />
+	<p>If the viewport is less than large, row becomes column:</p>
+	<div class="row">
+		<div class="col-lg-4" style="background-color: #fefcd8;">1</div>
+		<div class="col-lg-4" style="background-color: #d3fefe;">2</div>
+		<div class="col-lg-4" style="background-color: #fefcd8;">3</div>
+	</div>
+
+	<hr />
+	<p>If the viewport is less than medium, row becomes column:</p>
+	<div class="row">
+		<div class="col-md-4" style="background-color: #fefcd8;">1</div>
+		<div class="col-md-4" style="background-color: #d3fefe;">2</div>
+		<div class="col-md-4" style="background-color: #fefcd8;">3</div>
+	</div>
+</body>
+</html>
