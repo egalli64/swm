@@ -6,34 +6,36 @@
 </head>
 <body>
 	<h1>Hello JavaScript</h1>
-	<p>
-		Back to <a href="/simple2.html">previous</a> page<br />
-		Forward to <a href="/simpleJq.html">next</a> page
-	</p>
-	
+	<nav>
+		<ul>
+			<li><a href="/simple2.html">Back to previous page</a></li>
+			<li><a href="/simpleJq.html">Forward to next page</a></li>
+		</ul>
+	</nav>
+
 	<textarea id="target" rows="20" cols="80"></textarea>
 	<script type="text/javascript">
 		document.write("<p>JavaScript has been here</p>")
 
 		// logging
-		console.log('Something is going on');		
+		console.log('Something is going on');
 
 		// let vs var
 		let target = document.getElementById('target');
 		target.value += 'hello\n';
-		
+
 		// number, string
 		let result = 39 + 3;
 		target.value += 'result is ' + result + '\n';
-		target.value += 'result is a ' + typeof(result) + '\n';
-		
+		target.value += 'result is a ' + typeof (result) + '\n';
+
 		// boolean
 		target.value += 'result is 42? ' + (result == 42) + '\n';
 
 		var now = new Date();
 		target.value += now + '\n';
 		target.value += now.toDateString() + '\n';
-		
+
 		//
 		// array
 		let days = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
@@ -55,20 +57,20 @@
 			target.value += '[' + i + ': ' + days[i] + ']';
 		}
 		target.value += '\n';
-		
+
 		// strictly equals
 		let a = '42', b = 42;
-		if(a == b) {
-			target.value += a + ' ' + typeof(a) + ' == ' + b + ' ' + typeof(b) + '\n';			
+		if (a == b) {
+			target.value += a + ' ' + typeof (a) + ' == ' + b + ' ' + typeof (b) + '\n';
 		}
-		if(a !== b) {
-			target.value += a + ' ' + typeof(a) + ' !== ' + b + ' ' + typeof(b) + '\n';			
+		if (a !== b) {
+			target.value += a + ' ' + typeof (a) + ' !== ' + b + ' ' + typeof (b) + '\n';
 		}
 
 		// parseInt
 		let c = parseInt(a);
-		if(b === c) {
-			target.value += a + ' ' + typeof(a) + ' === ' + b + ' ' + typeof(b) + '\n';			
+		if (b === c) {
+			target.value += a + ' ' + typeof (a) + ' === ' + b + ' ' + typeof (b) + '\n';
 		}
 
 		// number precision
@@ -76,10 +78,10 @@
 		target.value += f + '\n';
 		target.value += f.toFixed(2) + '\n';
 		target.value += 'No decimal: ' + f.toFixed(0) + '\n';
-		
+
 		// not a number
 		let d = parseInt(now);
-		if(isNaN(d)) {
+		if (isNaN(d)) {
 			target.value += d + '\n';
 		}
 

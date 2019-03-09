@@ -23,7 +23,7 @@
 		$('textarea').append('Your score is ' + score + '\n');
 
 		$('textarea').append(generateMessage(name, new Date()) + '\n');
-		
+
 		// jquery access by id
 		//$('#signature').text('Hello by JQuery');
 
@@ -59,10 +59,10 @@
 			$(this).val("Don't click me");
 		});
 	});
-	
+
 	function convertValue(elSel) {
 		var target = document.getElementById('numStrId');
-		switch(elSel.selectedOptions[0].value) {
+		switch (elSel.selectedOptions[0].value) {
 		case '1':
 			target.value = 'One';
 			break;
@@ -85,10 +85,12 @@
 </style>
 </head>
 <body>
-	<p>
-		Back to <a href="/simpleJs.html">previous</a> page<br />
-		Forward to <a href="/simpleBs.html">bootstrap</a> page
-	</p>
+	<nav>
+		<ul>
+			<li><a href="/simpleJs.html">Back to previous page</a></li>
+			<li><a href="/simpleBs.html">Forward to next page</a></li>
+		</ul>
+	</nav>
 
 	<h2 hidden=true>A simple page</h2>
 	<textarea rows="10" cols="80"></textarea>
