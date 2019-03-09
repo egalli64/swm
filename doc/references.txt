@@ -9,6 +9,9 @@ https://developer.mozilla.org/en-US/docs/Web/HTML
 JavaScript on MDN
 https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
+Bootstrap
+https://getbootstrap.com/docs/4.3/getting-started/introduction/
+
 Spring Data JPA - Reference Documentation
 https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
 
