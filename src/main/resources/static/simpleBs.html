@@ -1,21 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<title>Using Bootstrap</title>
+<title>Bootstrap 1</title>
 <meta charset="utf-8">
 <!-- standard bootstrap viewport setup -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <!-- link rel="stylesheet" href="/css/bootstrap.min.css"-->
+<style>
+.my1 {
+	background-color: lightsalmon;
+}
+
+.my2 {
+	background-color: lightblue;
+}
+
+.my3 {
+	background-color: lavender;
+}
+
+.my4 {
+	background-color: bisque;
+}
+</style>
 </head>
 <body>
 	<!-- Bootstrap jumbotron: a block typically used for complex heading -->
 	<div class="jumbotron text-center">
 		<h1>A Bootstrap-based simple page</h1>
+		<h2>Layout and grid introduction</h2>
 	</div>
 
 	<!-- Bootstrap navigation bar -->
-	<nav class="navbar navbar-light" style="background-color: #fefcd8;">
+	<nav class="navbar navbar-light my1">
 		<a class="navbar-brand">Bootstrap Navigation Bar</a>
 		<ul class="nav navbar-nav">
 			<li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
@@ -27,65 +45,80 @@
 	<hr />
 
 	<!-- Bootstrap container: fixed width for each bootstrap screen size -->
-	<div class="container" style="background-color: #d3fefe;">
+	<div class="container my2">
 		<h1>Hello from Bootstrap</h1>
-		<p>I'm a fixed width container</p>
+		<p>I'm a fixed width container. My width changes at each breakpoint.</p>
 	</div>
 
 	<!-- Bootstrap container-fluid: always full width -->
-	<div class="container-fluid" style="background-color: #fefcd8;">
+	<div class="container-fluid my1">
 		<h1>Hello from Bootstrap</h1>
-		<p>I'm a fluid width container</p>
+		<p>I'm a fluid width container. I'm 100% wide all the time</p>
+	</div>
+
+	<div class="container-fluid my3">
+		<p>A row with three equal width columns:</p>
+		<div class="row">
+			<div class="col my2">1</div>
+			<div class="col my1">2</div>
+			<div class="col my2">3</div>
+		</div>
 	</div>
 
 	<hr />
-	<p>A row with three equal width columns:</p>
-	<div class="row">
-		<div class="col" style="background-color: #d3fefe;">1</div>
-		<div class="col" style="background-color: #fefcd8;">2</div>
-		<div class="col" style="background-color: #d3fefe;">3</div>
+
+	<div class="container-fluid text-center">
+		<h2>Bootstrap breakpoints (xl, lg, md, sm)</h2>
 	</div>
 
-	<hr />
-	<p>If viewport is less than small, row becomes column (total size = 12):</p>
-	<div class="row">
-		<div class="col-sm-4" style="background-color: #fefcd8;">1</div>
-		<div class="col-sm-4" style="background-color: #d3fefe;">2</div>
-		<div class="col-sm-4" style="background-color: #fefcd8;">3</div>
+	<div class="container-fluid my4">
+		<p>A row with three columns w/ extra large breakpoint:</p>
+		<div class="row">
+			<div class="col-xl-4 my1">1</div>
+			<div class="col-xl-4 my2">2</div>
+			<div class="col-xl-4 my1">3</div>
+		</div>
 	</div>
-
-	<hr />
-	<p>Same shift, six columns:</p>
-	<div class="row">
-		<div class="col-sm-2" style="background-color: #fefcd8;">1</div>
-		<div class="col-sm-2" style="background-color: #d3fefe;">2</div>
-		<div class="col-sm-2" style="background-color: #fefcd8;">3</div>
-		<div class="col-sm-2" style="background-color: #d3fefe;">4</div>
-		<div class="col-sm-2" style="background-color: #fefcd8;">5</div>
-		<div class="col-sm-2" style="background-color: #d3fefe;">6</div>
+	<div class="container-fluid my3">
+		<p>A row with different (xl breakpoint) sized columns:</p>
+		<div class="row">
+			<div class="col-xl-2 my1">small</div>
+			<div class="col-xl-4 my2">medium</div>
+			<div class="col-xl-6 my1">large</div>
+		</div>
 	</div>
-
-	<hr />
-	<p>A row with different (sm) sized columns:</p>
-	<div class="row">
-		<div class="col-sm-4" style="background-color: #fefcd8;">smaller</div>
-		<div class="col-sm-8" style="background-color: #d3fefe;">larger</div>
+	<div class="container-fluid my4">
+		<p>Large breakpoint:</p>
+		<div class="row">
+			<div class="col-lg-4 my1">1</div>
+			<div class="col-lg-4 my2">2</div>
+			<div class="col-lg-4 my1">3</div>
+		</div>
 	</div>
-
-	<hr />
-	<p>Here, reference viewport is large:</p>
-	<div class="row">
-		<div class="col-lg-4" style="background-color: #fefcd8;">1</div>
-		<div class="col-lg-4" style="background-color: #d3fefe;">2</div>
-		<div class="col-lg-4" style="background-color: #fefcd8;">3</div>
+	<div class="container-fluid my3">
+		<p>Medium breakpoint:</p>
+		<div class="row">
+			<div class="col-md-4 my1">1</div>
+			<div class="col-md-4 my2">2</div>
+			<div class="col-md-4 my1">3</div>
+		</div>
 	</div>
-
-	<hr />
-	<p>Reference viewport is medium:</p>
-	<div class="row">
-		<div class="col-md-4" style="background-color: #fefcd8;">1</div>
-		<div class="col-md-4" style="background-color: #d3fefe;">2</div>
-		<div class="col-md-4" style="background-color: #fefcd8;">3</div>
+	<div class="container-fluid my4">
+		<p>Small breakpoint:</p>
+		<div class="row">
+			<div class="col-sm-4 my1">1</div>
+			<div class="col-sm-4 my2">2</div>
+			<div class="col-sm-4 my1">3</div>
+		</div>
+		<p>Same breakpoint, six columns:</p>
+		<div class="row">
+			<div class="col-sm-2 my1">1</div>
+			<div class="col-sm-2 my2">2</div>
+			<div class="col-sm-2 my1">3</div>
+			<div class="col-sm-2 my2">4</div>
+			<div class="col-sm-2 my1">5</div>
+			<div class="col-sm-2 my2">6</div>
+		</div>
 	</div>
 </body>
 </html>
