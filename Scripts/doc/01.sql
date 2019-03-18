@@ -11,7 +11,7 @@
 --
 
 -- connect with sqlplus, user root as sysdba
--- go to orclpdb
+-- go to orclpdb __OR__ xepdb1 (Oracle XE)
 alter session set container = orclpdb;
 
 -- see database status
