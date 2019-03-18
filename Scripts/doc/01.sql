@@ -51,8 +51,10 @@ alter user me quota unlimited on users;
 -- GitHub
 
 -- Where is ojdbc8.jar?
--- ex: \OracleHomeUser\product\12.2.0\dbhome_1\jdbc\lib
+-- ex: /OracleHomeUser/product/12.2.0/dbhome_1/jdbc/lib
+--     /app/Administrator/product/18.0.0/dbhomeXE/jdbc/lib
 -- push it to your local maven repository as com.oracle.jdbc 8
 -- mvn install:install-file -Dfile=/OracleHomeUser/product/12.2.0/dbhome_1/jdbc/lib/ojdbc8.jar -DgroupId=com.oracle -DartifactId=jdbc -Dversion=8 -Dpackaging=jar
+-- mvn install:install-file -Dfile=/app/Administrator/product/18.0.0/dbhomeXE/jdbc/lib/ojdbc8.jar -DgroupId=com.oracle -DartifactId=jdbc -Dversion=8 -Dpackaging=jar
 
 -- mavenize a project and check its pom
