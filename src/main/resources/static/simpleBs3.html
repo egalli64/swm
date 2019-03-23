@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap 3</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- link rel="stylesheet" href="/css/bootstrap.min.css"-->
+<style>
+.my1 {
+	background-color: whitesmoke;
+}
+
+.my2 {
+	background-color: lightcyan;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-light">
+		<a class="navbar-brand">Bootstrap Navigation Bar</a>
+		<ul class="nav navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="/simpleBs2.html">Previous bootstrap page</a></li>
+		</ul>
+	</nav>
+
+	<div class="container-fluid">
+		<h1 class="text-center">Bootstrap table</h1>
+	</div>
+
+	<h2>A plain table</h2>
+	<table>
+		<thead>
+			<tr>
+				<th scope="row">\</th>
+				<th scope="col">Left</th>
+				<th scope="col">Center</th>
+				<th scope="col">Right</th>
+			</tr>
+		</thead>
+		<tr>
+			<th scope="row">Top</th>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+		</tr>
+		<tr>
+			<th scope="row">Center</th>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<th scope="row">Low</th>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+		</tr>
+	</table>
+
+	<h2>A plain Bootstrap table</h2>
+	<div class="container-fluid">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</table>
+	</div>
+
+	<h2>Borderless table</h2>
+	<div class="container-fluid">
+		<table class="table table-borderless">
+			<thead>
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</table>
+	</div>
+
+	<h2>A dark Bootstrap table</h2>
+	<div class="container-fluid">
+		<table class="table table-dark">
+			<thead>
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</table>
+	</div>
+
+	<h2>Dark/light table head</h2>
+	<div class="container-fluid">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</table>
+
+		<table class="table table-dark">
+			<thead class="thead-light">
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</table>
+	</div>
+
+	<h2>Striped rows</h2>
+	<div class="container-fluid">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</table>
+
+		<table class="table table-dark table-striped">
+			<thead class="thead-light">
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</table>
+	</div>
+
+	<h2>Full bordered table</h2>
+	<div class="container-fluid">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</table>
+
+		<table class="table table-bordered table-dark table-striped">
+			<thead class="thead-light">
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</table>
+	</div>
+
+	<h2>Hover on table</h2>
+	<div class="container-fluid">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</table>
+
+		<table class="table table-bordered table-dark table-striped table-hover">
+			<thead class="thead-light">
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<h2>Compact table (w/contextual classes)</h2>
+	<div class="container-fluid">
+		<table class="table table-sm table-success">
+			<thead>
+				<tr>
+					<th scope="row">\</th>
+					<th scope="col">Left</th>
+					<th scope="col">Center</th>
+					<th scope="col" class="table-danger">Right</th>
+				</tr>
+			</thead>
+			<tr>
+				<th scope="row">Top</th>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr class="table-warning">
+				<th scope="row">Center</th>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+			</tr>
+			<tr>
+				<th scope="row">Low</th>
+				<td>1</td>
+				<td class="table-info">2</td>
+				<td>3</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
