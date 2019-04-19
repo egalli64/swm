@@ -2,7 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>ThymeLeaf basic stuff</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
@@ -33,7 +36,7 @@
 	</div>
 
 	<h3>Table w/ th:each:</h3>
-	<table>
+	<table class="table table-sm table-success">
 		<tr>
 			<th>ID</th>
 			<th>NAME</th>

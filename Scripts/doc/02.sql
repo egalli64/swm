@@ -36,7 +36,7 @@ from regions
 where region_id = 1;
 
 -- rowid, rownum pseudo columns
-select rowid, rownum customer_id
+select rowid, rownum
 from regions;
 
 -- Arithmetic: + - * /

@@ -1,7 +1,5 @@
-The Java Language Specification
-https://docs.oracle.com/javase/specs/jls/se11/jls11.pdf
-https://docs.oracle.com/javase/specs/jls/se8/jls8.pdf
-https://docs.oracle.com/javase/specs/jls/se6/jls3.pdf
+The Java Language Specifications
+https://docs.oracle.com/javase/specs/
 
 HTML on MDN
 https://developer.mozilla.org/en-US/docs/Web/HTML
