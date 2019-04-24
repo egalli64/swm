@@ -20,7 +20,7 @@ start with 201 increment by 2;
 
 -- sequences for PK
 -- on simple created again as before
-insert into coders values(my_seq.nextval, 'Bertrand', 'Meier', SYSDATE, 8000);
+insert into coders values(my_seq.nextval, 'Bertrand', 'Meyer', SYSDATE, 8000);
 insert into coders values(my_seq.nextval, 'Bjarne', 'Stroustrup', SYSDATE, 8000);
 
 -- VIEW

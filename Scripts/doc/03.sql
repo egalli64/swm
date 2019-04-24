@@ -55,6 +55,10 @@ from regions
 where region_id not in (2, 3, null);
 
 select *
+from employees
+where manager_id = null;
+
+select *
 from regions
 where region_id is not null;
 

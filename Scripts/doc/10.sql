@@ -6,7 +6,7 @@ select * from regions;
 -- INSERT
 
 insert into regions(region_id, region_name)
-values (11, 'Antartica');
+values (11, 'Antarctica');
 
 insert into regions(region_id)
 values (12);
@@ -33,21 +33,21 @@ where region_id >= 10;
 -- COMMIT, ROLLBACK (TO SAVEPOINT)
 
 insert into regions(region_id, region_name)
-values (11, 'Antartica');
+values (11, 'Antarctica');
 
 -- inserting was a mistake
 rollback;
 
 insert into regions(region_id, region_name)
-values (11, 'Antartica');
+values (11, 'Antarctica');
 
 savepoint sp;
 
 insert into regions(region_id, region_name)
 values (12, 'Oceania');
 
--- Antartica is ok, but Oceania was a mistake
+-- Antarctica is ok, but Oceania was a mistake
 rollback to sp;
 
--- actually, Antartica was a mistake too
+-- actually, Antarctica was a mistake too
 rollback;

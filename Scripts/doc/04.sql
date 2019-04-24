@@ -12,7 +12,7 @@ where region_id = 1;
 -- classic join on pk-fk relation
 select region_name, country_name
 from regions, countries
-where regions.REGION_ID = countries.REGION_ID;
+where regions.region_id = countries.region_id;
 
 -- it's a NATURAL JOIN!
 select region_name, country_name
@@ -39,7 +39,7 @@ order by 2;
 -- classic join filtered: eu only
 select region_name, country_name
 from regions, countries
-where regions.REGION_ID = countries.REGION_ID
+where regions.region_id = countries.region_id
 and regions.region_id = 1;
 
 -- NATURAL JOIN WHERE for filtering
