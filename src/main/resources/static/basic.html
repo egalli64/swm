@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Basic HTML stuff</title>
+<!-- -->
+<style>input { color: red;}</style>
+<link rel="stylesheet"
+      type="text/css"
+      href="css/basic.css"/>
+<style type="text/css">
+    @import url(css/basic2.css);
+    input:hover { color: blue };
+ </style>
+<script src="js/jquery-3.3.1.min.js"></script> 
+<script>
+$(function() {
+    $('<div>Hello</div>').css({color: 'red'}).appendTo('body');
+    $('<div>AAA</div>').prependTo('.broken');
+    
+    console.log('div: ' + $('div').length);
+    $('#btnX').replaceWith('<button id="btnZ">ZZZ</button>');
+    
+$('html').dblclick(function(e) {
+    console.log('Double-click detected at ' + e.pageX + ', ' + e.pageY + '\n');
+});
+    
+$('a').click(function( event ) {
+    alert("You should not use any link on this page!");
+    event.preventDefault();
+});
+
+$('#btnZ').click(function() {
+    $('#msg').val('Something');
+
+let cur = parseInt($('#msg').css('font-size'));
+$('#msg').css('font-size', cur * 2);    
+});
+
+
+});
+</script> 
+</head>
+<body>
+<h1>...</h1>
+<form action="/comment" method="post">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="sender" value="Bob" required>
+  </div>
+  <div>
+    <label for="msg">Message:</label>
+    <textarea id="msg" name="message">blah blah blah</textarea>
+  </div>
+  <div>
+    <button type="submit">Send</button>
+  </div>
+</form>
+
+Text input: <input type="text" name="user" value="Bob" maxlength="30" />
+<br>
+Password input: <input type="password" name="password" maxlength="30" />
+<br>
+<textarea name="comment">Enter your comment here.</textarea>
+<br>
+<!--
+<input type="radio" name="lang" value="Java" id="langJ" checked />
+<label for="langJ">Java</label>
+<input type="radio" name="lang" id="langPy" value="Python" />
+<label for="langPy">Python</label>
+<input type="radio" name="lang" id="langCpp" value="C++" />
+<label for="langCpp">C++</label>
+<br-->
+<input type="checkbox" name="lang" value="Java" id="langJ" checked />
+<label for="langJ">Java</label>
+<input type="checkbox" name="lang" id="langPy" value="Python" checked />
+<label for="langPy">Python</label>
+<input type="checkbox" name="lang" id="langCpp" value="C++" checked />
+<label for="langCpp">C++</label>
+<br>
+<select name="os">
+    <option value="none">-</option>
+    <option value="linux" selected>Linux</option>
+    <option value="windows">Windows</option>
+    <option value="macOs">MacOS</option>
+</select>
+<br>
+<fieldset>
+    <legend>User</legend>
+    <label>First name: <input type="text" name="fname" /></label>
+    <label>Last name: <input type="text" name="lname" /></label>
+</fieldset>
+<input type="date" name="milestone" />
+<button id="btnX">X</button>
+<div class="broken">
+    <a href="something.wrong">A broken link</a>
+</div>
+<!--script src="js/basic.js"></script-->
+<script>
+    let heading = document.querySelector('h1');
+    heading.textContent = 'Hello World!';
+    console.log('hello!');
+    
+    // let preferito a var
+    let name = 'Bob';
+    console.log(name, typeof(name));
+    
+    name = 'Zoe';
+    console.log(name);
+    
+    let dog = { name : 'Zip', breed : 'Alsatian' };
+    console.log(dog);
+    console.log(typeof(name), typeof(42), typeof(true), typeof([1, 'hi']), typeof(dog));
+    
+    let x;
+    console.log(typeof(x));
+
+    const z = 42;
+    
+    console.log(2**3, Math.pow(2, 3));
+    console.log(2/3, 42%10);
+    
+    var a = 2;
+    console.log(a++);
+    a = 42;
+    console.log(Number('42') === 42);
+    
+    let s = 'a,b,c';
+    console.log(s, s.split(','));
+    
+    let data = [1, 'hello', [true, 42.24]];
+
+console.log(data.length);
+
+console.log(data[1]);
+console.log(data[2][1]);
+data[2] = false;
+
+for(let i = 0; i < data.length; i++) {
+    console.log(data[i]);
+}
+
+console.log(data.join(), data.toString());
+
+data.pop();
+data.shift();
+data.push('push');
+data.unshift('unshift');
+console.log(data);
+
+function g(a, b) {
+    return a + b;
+}
+
+console.log(g(1,2));
+</script>
+</body>
+</html>
