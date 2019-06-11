@@ -19,22 +19,20 @@ end;
 
 -- explicit FETCH CURSOR
 declare
-    v_coder_id coders.coder_id%type;
     v_last_name coders.last_name%type;
     v_hire_date coders.hire_date%type;
     cursor v_coder_cursor is
-        select coder_id, last_name, hire_date
-        from coders
-        order by last_name;
+        select last_name, hire_date
+        from coders;
 begin
     open v_coder_cursor;
 
     loop
         fetch v_coder_cursor
-        into v_coder_id, v_last_name, v_hire_date;
+        into v_last_name, v_hire_date;
         exit when v_coder_cursor%notfound;
 
-        dbms_output.put_line('[' || v_coder_id || ', ' || v_last_name || ', ' || v_hire_date || ']');
+        dbms_output.put_line('[' || v_last_name || ', ' || v_hire_date || ']');
     end loop;
     close v_coder_cursor;
 end;
@@ -43,12 +41,11 @@ end;
 -- implicit FETCH CURSOR in a FOR LOOP
 declare
     cursor v_coder_cursor is
-        select coder_id, last_name, hire_date
-        from coders
-        order by last_name;
+        select last_name, hire_date
+        from coders;
 begin
     for v_cur in v_coder_cursor loop
-        dbms_output.put_line('[' || v_cur.coder_id || ', ' || v_cur.last_name || ', ' || v_cur.hire_date || ']');
+        dbms_output.put_line('[' || v_cur.last_name || ', ' || v_cur.hire_date || ']');
     end loop;
 end;
 /

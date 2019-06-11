@@ -22,13 +22,8 @@ end;
 /
 
 -- EXCEPTION
-declare
-    v_width integer;
-    v_height integer := 0;
-    v_area integer := 6;
 begin
-    v_width := v_area / v_height;
-    dbms_output.put_line('v_width = ' || v_width);
+    dbms_output.put_line(6 / 0);
 exception
     when zero_divide then
         dbms_output.put_line('Division by zero');
@@ -36,15 +31,29 @@ end;
 /
 
 -- OTHERS EXCEPTION
-BEGIN
-    DBMS_OUTPUT.PUT_LINE(1 / 0);
-EXCEPTION
-    WHEN OTHERS THEN
-        DBMS_OUTPUT.PUT_LINE('An exception occurred');
-END;
+begin
+    dbms_output.put_line(1 / 0);
+exception
+    when others then
+        dbms_output.put_line('An exception occurred');
+end;
 /
 
 -- Conditional Logic
+declare
+    v_a integer := 1;
+begin
+    if v_a > 0 then
+        dbms_output.put_line('v_a is positive');
+    elsif v_a = 0 then
+        dbms_output.put_line('v_a is zero');
+    else
+        dbms_output.put_line('v_a is negative');
+    end if;
+end;
+/
+
+
 declare
     v_a integer := 1;
     v_b integer := 2;
@@ -66,13 +75,22 @@ end;
 declare
     v_x integer;
 begin
+    -- LOOP - EXIT
+    v_x := 0;
+    loop
+        v_x := v_x + 1;
+        if v_x = 3 then exit;
+        end if;
+    end loop;
+    dbms_output.put_line('loop exit on ' || v_x);
+
     -- LOOP - EXIT WHEN
     v_x := 0;
     loop
         v_x := v_x + 1;
         exit when v_x = 5;
     end loop;
-    dbms_output.put_line('loop completed: ' || v_x);
+    dbms_output.put_line('loop exit when ' || v_x);
 
     -- CONTINUE
     v_x := 0;
@@ -108,7 +126,7 @@ begin
     for i in 1..5 loop
         dbms_output.put_line('for loop: ' || i);
     end loop;
-    
+
     -- REVERSE FOR LOOP
     for i in reverse 1..5 loop
         dbms_output.put_line('for loop: ' || i);
