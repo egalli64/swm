@@ -1,6 +1,5 @@
 package pa.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -49,7 +48,7 @@ public class CountryCtrl {
             @RequestParam String name, //
             Model model) {
         logger.debug("countries starting by " + name);
-        List<Country> countries = repo.findByNameLikeIgnoreCase(name + "%");
+        Iterable<Country> countries = repo.findByNameLikeIgnoreCase(name + "%");
 
         model.addAttribute("message", " with name starting by " + name);
         model.addAttribute("countries", countries);
@@ -65,7 +64,7 @@ public class CountryCtrl {
 
         if (region.isPresent()) {
             Region cur = region.get();
-            List<Country> countries = repo.findByRegion(cur);
+            Iterable<Country> countries = repo.findByRegion(cur);
             model.addAttribute("countries", countries);
             model.addAttribute("region", cur);
         } else {
