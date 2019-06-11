@@ -14,11 +14,12 @@
 		return 'Hello ' + user + '. You connected at ' + date;
 	}
 
+	// the ready event
 	// same as: $(document).ready(function() {
 	$(function() {
 		$('h2').slideDown(1000);
 
-		var score = 42;
+		let score = 42;
 		$('textarea').append('Your score is ' + score + '\n');
 
 		$('textarea').append(generateMessage(name, new Date()) + '\n');
@@ -110,9 +111,7 @@
 			<option>1</option>
 			<option>2</option>
 			<option>3</option>
-		</select>
-		<br />
-		<label>As string: <input id="numStrId" readonly="readonly"></label>
+		</select> <br /> <label>As string: <input id="numStrId" readonly="readonly"></label>
 	</div>
 </body>
 </html>
