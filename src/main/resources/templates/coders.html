@@ -41,23 +41,23 @@
 	</form>
 
 	<h2>Edit coder:</h2>
-	<form action="/coders/save">
-		<label>Coder id:
-			<select name="id">
-				<option th:each="cur: ${employees}" th:value="${cur.id}"
-					th:text="${cur.id}">...</option>
-			</select>
-		</label>
-		<br />
-		<label>First name:
-			<input name="first" required="required" id="edtFirstId">
-		</label>
-		<br />
-		<label>Last name: <input name="last" required="required"></label>
-		<div>
-			<button>Save</button>
-		</div>
-	</form>
+    <form action="/coders/save">
+        <label>Coder id:
+            <select name="id">
+                <option th:each="cur: ${employees}" th:value="${cur.id}"
+                    th:text="${cur.id}">...</option>
+            </select>
+        </label>
+        <br />
+        <label>First name:
+            <input name="first" required="required" id="edtFirstId">
+        </label>
+        <br />
+        <label>Last name: <input name="last" required="required"></label>
+        <div>
+            <button>Save</button>
+        </div>
+    </form>
 
 	<h2>Delete coder:</h2>
 	<form action="/coders/delete">

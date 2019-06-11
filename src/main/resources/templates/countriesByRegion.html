@@ -13,7 +13,7 @@
 		</p>
 	</div>
 
-	<div th:unless="${region.name.isEmpty()}">
+    <div th:unless="${region.name.isEmpty()}">
 		<h1>Countries in <span th:text="${region.name}">region</span></h1>
 		<p>
 			Back to <a href="/regions">all regions</a> page
