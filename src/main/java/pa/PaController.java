@@ -17,64 +17,77 @@ import pa.model.Region;
 @Controller
 @PropertySource("login.properties")
 public class PaController {
-	private static final Logger logger = LoggerFactory.getLogger(PaController.class);
+    private static final Logger logger = LoggerFactory.getLogger(PaController.class);
 
-	@Value("${admin}")
-	private String admin;
+    @Value("${admin}")
+    private String admin;
 
-	@Value("${admin.password}")
-	private String adminPwd;
+    @Value("${admin.password}")
+    private String adminPwd;
 
-	@Value("${user}")
-	private String myUsr;
+    @Value("${user}")
+    private String myUsr;
 
-	@Value("${user.password}")
-	private String myUsrPwd;
+    @Value("${user.password}")
+    private String myUsrPwd;
 
-	// this is not a good idea!
-	@GetMapping("/login")
-	public String loginByGet( //
-			@RequestParam(name = "user", defaultValue = "Unknown") String user, //
-			@RequestParam(name = "password") String password, //
-			Model model) {
-		logger.warn("Unsafe login attempt for user: " + user);
+    // this is not a good idea!
+    @GetMapping("/login")
+    public String loginByGet( //
+            @RequestParam(name = "user", defaultValue = "Unknown") String user, //
+            @RequestParam(name = "password") String password, //
+            Model model) {
+        logger.warn("Unsafe login attempt for user: " + user);
 
-		model.addAttribute("user", user);
-		return "checkPassword";
-	}
+        model.addAttribute("user", user);
+        return "/checkPassword";
+    }
 
-	@PostMapping("/login")
-	public String login( //
-			@RequestParam(name = "user") String user, //
-			@RequestParam(name = "password") String password, //
-			Model model) {
-		logger.debug("Login attempt for user: " + user);
+    @PostMapping("/login")
+    public String login( //
+            @RequestParam(name = "user") String user, //
+            @RequestParam(name = "password") String password, //
+            Model model) {
+        logger.debug("Login attempt for user: " + user);
 
-		model.addAttribute("user", user);
-		if (user.equals(admin)) {
-			if (password.equals(adminPwd)) {
-				return "manager";
-			}
-		} else if (user.equals(myUsr) && password.equals(myUsrPwd)) {
-			return "employees";
-		}
-		return "checkPassword";
-	}
+        model.addAttribute("user", user);
+        if (user.equals(admin)) {
+            if (password.equals(adminPwd)) {
+                return "/manager";
+            }
+        } else if (user.equals(myUsr) && password.equals(myUsrPwd)) {
+            return "/employees";
+        }
+        return "/checkPassword";
+    }
 
-	@GetMapping("/simple")
-	public String showCountries(Model model) {
-		logger.debug("Show thymeLeaf simple test page");
-		model.addAttribute("data", Arrays.asList( //
-				new Region(1, "North Europe"), //
-				new Region(2, "South Europe")) //
-		);
-		model.addAttribute("user", "Tom Jones");
+    @GetMapping("/hello")
+    public String hello() {
+        return "/hello";
+    }
 
-		model.addAttribute("users", Arrays.asList( //
-				new String[] { admin, adminPwd }, //
-				new String[] { myUsr, myUsrPwd }) //
-		);
+    @GetMapping("/guest")
+    public String guest( //
+            @RequestParam(name = "user") String user, //
+            Model model) {
+        model.addAttribute("user", user);
+        return "/guest";
+    }
 
-		return "simple";
-	}
+    @GetMapping("/simple")
+    public String showCountries(Model model) {
+        logger.debug("Show thymeLeaf simple test page");
+        model.addAttribute("data", Arrays.asList( //
+                new Region(1, "North Europe"), //
+                new Region(2, "South Europe")) //
+        );
+        model.addAttribute("user", "Tom Jones");
+
+        model.addAttribute("users", Arrays.asList( //
+                new String[] { admin, adminPwd }, //
+                new String[] { myUsr, myUsrPwd }) //
+        );
+
+        return "/simple";
+    }
 }

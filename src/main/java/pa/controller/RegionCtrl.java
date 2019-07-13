@@ -24,7 +24,7 @@ public class RegionCtrl {
     public String showRegions(Model model) {
         logger.debug("Get all regions");
         model.addAttribute("regions", repo.findAll());
-        return "regions";
+        return "/regions";
     }
 
     @GetMapping("/region")
@@ -39,7 +39,7 @@ public class RegionCtrl {
         } else {
             model.addAttribute("id", id);
         }
-        return "region";
+        return "/region";
     }
 
     @GetMapping("/region/save")
@@ -52,7 +52,7 @@ public class RegionCtrl {
         repo.save(region);
 
         model.addAttribute("regions", repo.findAll());
-        return "regions";
+        return "/regions";
     }
 
     @GetMapping("/region/delete")
@@ -63,7 +63,7 @@ public class RegionCtrl {
         repo.deleteById(id);
 
         model.addAttribute("regions", repo.findAll());
-        return "regions";
+        return "/regions";
     }
 
     @GetMapping("/my/regions")
@@ -76,5 +76,4 @@ public class RegionCtrl {
         model.addAttribute("frRegion", repo.myRegionNameFor("France"));
         return "/my/regions";
     }
-
 }
