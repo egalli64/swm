@@ -1,6 +1,5 @@
-/target/
-/.classpath
-/.dbeaver-data-sources.xml
-/.project
-/.settings/
-/bin/
+target/
+.classpath
+.project
+.settings/
+bin/
