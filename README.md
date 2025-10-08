@@ -1,17 +1,14 @@
 # Dockerized Spring Microservices
 
-## Monolithic Repository (Monorepo)
-
-Modules
-- Eureka server - Discovery
+Monolithic Repository (Monorepo) meant for development only
 
 ## Requirements
-- Docker
-- RabbitMQ: docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
+- Docker (Start Docker Desktop if on Windows/MacOS)
+    - RabbitMQ
+    - PostgreSQL
 
-## Startup external servers
-- Start Docker Desktop (if on Windows/MacOS)
-- Start RabbitMQ: docker start rabbitmq
+## Modules
+- Eureka server - Discovery
 
 ## Build, run, check a service (from root directory)
 - mvnw clean package -pl eureka-d-server
