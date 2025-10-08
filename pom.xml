@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Spring Boot Docker Microservices
+
+    https://github.com/egalli64/dockerized-microservices
+  -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -9,7 +14,7 @@
     <version>5.10.0</version>
     <packaging>pom</packaging>
 
-    <name>dm</name>
+    <name>Dockerized Microservices</name>
     <description>Dockerized Spring Microservices</description>
 
     <properties>
@@ -19,10 +24,11 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>3.5.6</spring-boot.version>
         <spring-cloud.version>2025.0.0</spring-cloud.version>
+        <postgresql.version>42.7.8</postgresql.version>
+        <docker.image.prefix>dockerized-microservices</docker.image.prefix>
     </properties>
 
     <modules>
-        <module>license-service</module>
     </modules>
 
     <dependencyManagement>
@@ -41,8 +47,20 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <pluginManagement>
@@ -51,6 +69,13 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -60,6 +85,18 @@
                         <compilerArgs>
                             <arg>-parameters</arg>
                         </compilerArgs>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>1.4.13</version>
+                    <configuration>
+                        <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                        <tag>latest</tag>
+                        <buildArgs>
+                            <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
                     </configuration>
                 </plugin>
             </plugins>
