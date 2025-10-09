@@ -1,0 +1,53 @@
+# Spring Boot Docker Microservices - Configuration Server
+#
+# https://github.com/egalli64/dockerized-microservices
+
+# Build stage
+FROM eclipse-temurin:25-jdk-alpine AS builder
+WORKDIR /app
+
+# Accept build argument for module directory name
+ARG MODULE_DIR=config-d-server
+
+# Copy Maven wrapper and pom files
+COPY .mvn/ .mvn/
+COPY mvnw pom.xml ./
+
+# Copy all module pom.xml files (Maven reactor needs to see all modules)
+COPY eureka-d-server/pom.xml ./eureka-d-server/
+COPY config-d-server/pom.xml ./config-d-server/
+# COPY api-gateway/pom.xml ./api-gateway/
+
+# Download dependencies (cached layer)
+RUN ./mvnw dependency:go-offline -pl ${MODULE_DIR}
+
+# Copy source code and build
+COPY ${MODULE_DIR}/src ./${MODULE_DIR}/src
+RUN ./mvnw clean package -pl ${MODULE_DIR} -DskipTests
+
+# Runtime stage
+FROM eclipse-temurin:25-jre-alpine
+WORKDIR /app
+
+# Accept build argument for module directory name
+ARG MODULE_DIR=config-d-server
+
+# Install git (required for git-based config repositories)
+RUN apk add --no-cache git
+
+# Create non-root user for security
+RUN addgroup -S spring && adduser -S spring -G spring
+USER spring:spring
+
+# Copy jar from builder stage
+COPY --from=builder /app/${MODULE_DIR}/target/*.jar app.jar
+
+# Expose port
+EXPOSE 8888
+
+# Health check (using wget which is available in Alpine)
+HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8888/actuator/health || exit 1
+
+# Run application
+ENTRYPOINT ["java", "-jar", "app.jar"]
