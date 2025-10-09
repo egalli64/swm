@@ -30,6 +30,7 @@
 
     <modules>
         <module>eureka-d-server</module>
+        <module>config-d-server</module>
     </modules>
 
     <dependencyManagement>
