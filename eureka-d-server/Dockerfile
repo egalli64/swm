@@ -14,7 +14,11 @@ ARG MODULE_DIR=eureka-d-server
 # Copy Maven wrapper and pom files
 COPY .mvn/ .mvn/
 COPY mvnw pom.xml ./
-COPY ${MODULE_DIR}/pom.xml ./${MODULE_DIR}/
+
+# Copy all module pom.xml files (Maven reactor needs to see all modules)
+COPY eureka-d-server/pom.xml ./eureka-d-server/
+COPY config-d-server/pom.xml ./config-d-server/
+# COPY api-gateway/pom.xml ./api-gateway/
 
 # Download dependencies (cached layer)
 RUN ./mvnw dependency:go-offline -pl ${MODULE_DIR}
