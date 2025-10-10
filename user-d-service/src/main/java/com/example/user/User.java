@@ -1,6 +1,6 @@
 /*
  * Spring Boot Docker Microservices - User Service
- * 
+ *
  * https://github.com/egalli64/dockerized-microservices
  */
 package com.example.user;
@@ -14,7 +14,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "users")
+@Table(name = "USERS")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
