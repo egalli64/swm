@@ -31,6 +31,9 @@
     <modules>
         <module>eureka-d-server</module>
         <module>config-d-server</module>
+        <module>api-d-gateway</module>
+        <module>user-d-service</module>
+        <module>product-d-service</module>
     </modules>
 
     <dependencyManagement>
