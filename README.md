@@ -15,6 +15,7 @@ Monolithic Repository (Monorepo) meant for development only
 - [Configuration Server](config-d-server/README.md)
 - [API Gateway](api-d-gateway/README.md)
 - [User Service](user-d-service/README.md)
+- [Product Service](product-d-service/README.md)
 
 ## Turn off
 - Stop the services and Kafka: docker compose down
